@@ -1,4 +1,4 @@
-﻿Public Class GPRMC_Class
+Public Class GPRMC_Class
 
 #Region "GPGMC_Notes"
     '    RMC - NMEA has its own version of essential gps pvt (position, velocity, time) data. It is called RMC, The Recommended Minimum, which will look similar to:
@@ -26,8 +26,8 @@
     Public Shared NSindicator As String
     Public Shared LONGITUDE As String
     Public Shared EWindicator As String
-    Public Shared SOG As Double
-    Public Shared COG As Double
+    Public Shared SOG As String
+    Public Shared COG As String
     Public Shared UTCDATE As String
     Public Shared MODE As String
     Public Shared CHECKSUM As String
@@ -35,8 +35,10 @@
 #End Region
 
     Public Sub globalBU353ClassVar(ByVal bu353Sentence As Array)
-        Dim centenceParse() As String
+
+        Dim centenceParse() As String 'used for checksum
         Dim SatIDCount As String = 0
+
         Dim lengthN As Integer = bu353Sentence.Length
 
         sentenceID = bu353Sentence(0)
@@ -49,7 +51,7 @@
                     STATUS = bu353Sentence(word)
                 Case 3
                     LATITUDE = bu353Sentence(word)
-                Case 4 To 8
+                Case 4
                     NSindicator = bu353Sentence(word)
                 Case 5
                     LONGITUDE = bu353Sentence(word)
