@@ -1,4 +1,4 @@
-﻿Imports System
+Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Data
@@ -46,9 +46,10 @@ Public Class frmGpsUI
     Dim gfx2 As Graphics = Graphics.FromImage(output2)
     Dim SpriteX2 As Integer = 135
     Dim SpriteY2 As Integer = 135
-    Dim moveStep2 As Integer = 4
+    Dim moveStep2 As Double = 4
 
     '''''''''''''''''
+    Public distanceTraveled As Integer = 0
     Public receptionLossHz As Integer = 0
     Public appStartUPTimeInstance As String = My.Computer.Clock.LocalTime.ToShortTimeString
     Public gpsFix As Boolean
@@ -56,7 +57,6 @@ Public Class frmGpsUI
     Public startPointReset As Boolean = False
     Public satelitepane As Boolean = False
     Public DecimalDegree As Boolean = False 'toggle button value
-
 
 #End Region
 
@@ -144,22 +144,21 @@ Public Class frmGpsUI
         lblZoom.Text = "x" + i.ToString
     End Sub
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-
         Dim AntennaTime = GPGGA_Class.utcTime.ToString()
 
         startstop = Not startstop
 
-        If (startstop = True) Then
-            ToggleUpdateOFF()
-        Else
-            ToggleUpdateON()
-        End If
-
         If ((AntennaTime <> "") Or (AntennaTime <> Nothing)) Then
-            enterRecord()
+            'enterRecord() 'write to text file
             lostSignalHz.Text = receptionLossHz.ToString + " lost signals since " + appStartUPTimeInstance + " Local, " + AntennaTime + " UTC"
         Else
             lostSignalHz.Text = "Refresh 'START/PAUSE Button'"
+        End If
+
+        If (startstop = True) Then
+            ToggleUpdateOFF() 'start
+        Else
+            ToggleUpdateON() 'stop
         End If
 
     End Sub
@@ -194,7 +193,7 @@ Public Class frmGpsUI
             btnSateliteInfo.Text = "Open Satelite Panel" & ChrW(&H2B0C)
         Else
             'expand
-            Me.Size = New System.Drawing.Size(640, 676)
+            Me.Size = New System.Drawing.Size(820, 676)
             btnSateliteInfo.Text = "Close Satelite Panel" & ChrW(&H2B0C)
         End If
 
@@ -226,7 +225,8 @@ Public Class frmGpsUI
         HDOP = GPGSA_Class.HDOP
         VDOP = GPGSA_Class.VDOP
 
-        lblfixtype.Text = "Fix Type: " & Mode1
+        lblmode.Text = "Mode: " & Mode1
+        lblfixtype.Text = "Fix Type: " & Mode2
         noofsats.Text = "No Of Sats.: " & sateltiteNo.ToString
         lblPDOP.Text = "PDOP: " & PDOP
         lblHDOP.Text = "HDOP: " & HDOP
@@ -234,17 +234,26 @@ Public Class frmGpsUI
     End Sub
 
     Private Sub readGPRMC(ByVal lineArr As Array)
-        Dim lat, lon, utctime, status, utcdate, NS, EW, mode As String
-        Dim sog, cog As Double
+        'Dim lat, lon, utctime, status, utcdate, mode As String
+        'Dim sog, cog, NS, EW As String
 
 
         BU353_GPRMC.globalBU353ClassVar(lineArr)
 
-        sog = GPRMC_Class.COG
-        cog = GPRMC_Class.SOG
+        txtRMC_UtcTime.Text = "Time: " & GPRMC_Class.UTCTime.ToString()
+        txtRMC_UtcDate.Text = "Date: " & GPRMC_Class.UTCDATE.ToString()
 
-        lblCOG.Text = "Course (COG): " & cog
-        lblSOG.Text = "Speed (SOG): " & sog
+        txtRMC_Lat.Text = GPRMC_Class.LATITUDE.ToString()
+        txtRMC_Lon.Text = GPRMC_Class.LONGITUDE.ToString()
+
+        txtRMC_SOG.Text = GPRMC_Class.SOG.ToString()
+        txtRMC_COG.Text = GPRMC_Class.COG.ToString()
+
+        txtRMC_NS.Text = GPRMC_Class.NSindicator.ToString()
+        txtRMC_EW.Text = GPRMC_Class.EWindicator.ToString()
+
+        txtRMC_Status.Text = GPRMC_Class.STATUS.ToString()
+
 
 
     End Sub
@@ -334,15 +343,21 @@ Public Class frmGpsUI
                                 Try
                                     readGPGGA(lineArr)
 
+                                    'initize a start point
                                     If (startPointReset = False) Then 'initialize a start point
                                         initialLatitude = GPGGA_Class.latPosition
                                         initialLongitude = GPGGA_Class.lonPosition
                                         startPointReset = True
-                                    End If
 
-                                    If (startPointReset = True) Then
+                                        enterRecord()
+                                    Else
                                         positionView(hsbZoom.Value)
                                     End If
+
+                                    'If (startPointReset = True) Then
+                                    'positionView(hsbZoom.Value)
+                                    'End If
+
                                 Catch
                                     SpottyFixDisplayData("!", "!")
 
@@ -438,21 +453,26 @@ Public Class frmGpsUI
 
     End Sub
     Sub positionView(ByVal zoomFactor As Integer)
-        Dim xx, yy As Integer
-        'xx = GetNumberFromStringUsingSB(Longitude) - 842620
-        'yy = GetNumberFromStringUsingSB(Latitude) - 302020
 
-        initialLatitude = GPGGA_Class.latPosition
-        initialLongitude = GPGGA_Class.lonPosition
+        Dim x1, x2, y1, y2, distanceX, distanceY, distanceXY As Double
+        Dim unitOfMeasure As Char
+
+        y1 = GPGGA_Class.lonPosition
+        y2 = initialLongitude
+
+        x1 = GPGGA_Class.latPosition
+        x2 = initialLatitude
+
+        unitOfMeasure = "M" 'miles
 
         If ((GPGGA_Class.latPosition <> Nothing) And (initialLongitude <> Nothing) And (GPGGA_Class.lonPosition <> Nothing) And (initialLatitude <> Nothing)) Then
 
-            'this logic only works if you are traveling within the same hemisphere
-            xx = GPGGA_Class.lonPosition - initialLongitude
-            yy = GPGGA_Class.latPosition - initialLatitude
+            distanceX = distance(x1, 0, x2, 0, unitOfMeasure)
+            distanceY = distance(0, y1, 0, y2, unitOfMeasure)
+            distanceXY = distance(x1, y1, x2, y2, unitOfMeasure) 'un used for now
 
-            SpriteX2 = ((xx * 300) / (100 ^ zoomFactor)) + 150
-            SpriteY2 = ((yy * 300) / (100 ^ zoomFactor)) + 150
+            SpriteX2 = (distanceX * (10 ^ zoomFactor)) + 150
+            SpriteY2 = (distanceY * (10 ^ zoomFactor)) + 150
 
             TextBox1.Text = SpriteX2 - 150
             TextBox2.Text = SpriteY2 - 150
@@ -540,6 +560,14 @@ Public Class frmGpsUI
         btnUpdateComPortNumber.Enabled = False
         tmrBaud.Enabled = True
         receptionLossHz = 0
+
+
+        'error catch to ensure the initial starting point came from gps coordinate
+
+        If (startPointReset = False) Then
+            'initialLatitude = GPGGA_Class.latPosition
+            'initialLongitude = GPGGA_Class.lonPosition
+        End If
 
     End Sub
     Private Sub NoSerialComDisp()
@@ -651,8 +679,6 @@ Public Class frmGpsUI
 
     End Function
 
-#End Region
-
     Private Sub frmGpsUI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim lb As String
@@ -690,6 +716,70 @@ Public Class frmGpsUI
         btnSateliteInfo.Text = "Open Satelite Panel" & ChrW(&H2B0C)
 
     End Sub
+
+#End Region
+
+#Region "Math"
+
+    ' I totally just coppied and paste this piece of math from http://www.geodatasource.com/developers/vb-dot-net
+    ' no shame
+    ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    ':::  This routine calculates the distance between two points (given the     :::
+    ':::  latitude/longitude of those points). It is being used to calculate     :::
+    ':::  the distance between two locations using GeoDataSource (TM) prodducts  :::
+    ':::                                                                         :::
+    ':::  Definitions:                                                           :::
+    ':::    South latitudes are negative, east longitudes are positive           :::
+    ':::                                                                         :::
+    ':::  Passed to function:                                                    :::
+    ':::    lat1, lon1 = Latitude and Longitude of point 1 (in decimal degrees)  :::
+    ':::    lat2, lon2 = Latitude and Longitude of point 2 (in decimal degrees)  :::
+    ':::    unit = the unit you desire for results                               :::
+    ':::           where: 'M' is statute miles (default)                         :::
+    ':::                  'K' is kilometers                                      :::
+    ':::                  'N' is nautical miles                                  :::
+    ':::                                                                         :::
+    ':::  Worldwide cities and other features databases with latitude longitude  :::
+    ':::  are available at http://www.geodatasource.com                          :::
+    ':::                                                                         :::
+    ':::  For enquiries, please contact sales@geodatasource.com                  :::
+    ':::                                                                         :::
+    ':::  Official Web site: http://www.geodatasource.com                        :::
+    ':::                                                                         :::
+    ':::              GeoDataSource.com (C) All Rights Reserved 2015             :::
+    ':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    Public Function distance(ByVal lat1 As Double, ByVal lon1 As Double, ByVal lat2 As Double, ByVal lon2 As Double, ByVal unit As Char) As Double
+
+        Dim theta As Double = lon1 - lon2
+        Dim dist As Double = Math.Sin(deg2rad(lat1)) * Math.Sin(deg2rad(lat2)) + Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) * Math.Cos(deg2rad(theta))
+
+        dist = Math.Acos(dist)
+        dist = rad2deg(dist)
+        dist = dist * 60 * 1.1515
+
+        If unit = "K" Then
+            dist = dist * 1.609344
+        ElseIf unit = "N" Then
+            dist = dist * 0.8684
+        End If
+
+        Return dist
+    End Function
+
+    Private Function deg2rad(ByVal deg As Double) As Double
+
+        Return (deg * Math.PI / 180.0)
+
+    End Function
+
+    Private Function rad2deg(ByVal rad As Double) As Double
+
+        Return rad / Math.PI * 180.0
+
+    End Function
+
+#End Region
 
 
 End Class
