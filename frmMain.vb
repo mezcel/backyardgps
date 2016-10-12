@@ -206,31 +206,30 @@ Public Class frmGpsUI
 #Region "Serial"
 
     Private Sub readGPGSA(ByVal lineArr As Array)
-        Dim Mode1 As String
-        Dim Mode2, sateltiteNo As Integer
-        Dim PDOP, HDOP, VDOP As Double
-        Dim IDs(11) As Integer
 
         BU353_GPGSA.globalBU353ClassVar(lineArr)
 
-        Mode1 = GPGSA_Class.MODE1
-        Mode2 = GPGSA_Class.MODE2
-        sateltiteNo = GPGSA_Class.SatIDCount
+        lblmode.Text = "Mode: " & GPGSA_Class.MODE1
+        lblfixtype.Text = "Fix Type: " & GPGSA_Class.MODE2
 
-        For idNo = 0 To sateltiteNo
-            IDs(idNo) = GPGSA_Class.SatID(idNo)
-        Next
+        noofsats.Text = "No Of Sats.: " & GPGSA_Class.SatIDCount  '& sateltiteNo.ToString &
+        lblSatID0.Text = "Sat. ID: " & GPGSA_Class.SatID(0)
+        lblSatID1.Text = "Sat. ID: " & GPGSA_Class.SatID(1)
+        lblSatID2.Text = "Sat. ID: " & GPGSA_Class.SatID(2)
+        lblSatID3.Text = "Sat. ID: " & GPGSA_Class.SatID(3)
+        lblSatID4.Text = "Sat. ID: " & GPGSA_Class.SatID(4)
+        lblSatID5.Text = "Sat. ID: " & GPGSA_Class.SatID(5)
+        lblSatID6.Text = "Sat. ID: " & GPGSA_Class.SatID(6)
+        lblSatID7.Text = "Sat. ID: " & GPGSA_Class.SatID(7)
+        lblSatID8.Text = "Sat. ID: " & GPGSA_Class.SatID(8)
+        lblSatID9.Text = "Sat. ID: " & GPGSA_Class.SatID(9)
+        lblSatID10.Text = "Sat. ID: " & GPGSA_Class.SatID(10)
+        lblSatID11.Text = "Sat. ID: " & GPGSA_Class.SatID(11)
 
-        PDOP = GPGSA_Class.PDOP
-        HDOP = GPGSA_Class.HDOP
-        VDOP = GPGSA_Class.VDOP
+        lblPDOP.Text = "PDOP: " & GPGSA_Class.PDOP
+        lblHDOP.Text = "HDOP: " & GPGSA_Class.HDOP
+        lblVDOP.Text = "VDOP: " & GPGSA_Class.VDOP
 
-        lblmode.Text = "Mode: " & Mode1
-        lblfixtype.Text = "Fix Type: " & Mode2
-        noofsats.Text = "No Of Sats.: " & sateltiteNo.ToString
-        lblPDOP.Text = "PDOP: " & PDOP
-        lblHDOP.Text = "HDOP: " & HDOP
-        lblVDOP.Text = "VDOP: " & VDOP
     End Sub
 
     Private Sub readGPRMC(ByVal lineArr As Array)
@@ -273,6 +272,7 @@ Public Class frmGpsUI
 
         NS = GPGGA_Class.northsouthNSString
         Latitude = GPGGA_Class.latPosition.ToString
+
         EW = GPGGA_Class.eastwestEWString
         Longitude = GPGGA_Class.lonPosition.ToString
 
@@ -302,9 +302,6 @@ Public Class frmGpsUI
     End Sub
 
     Private Sub readGPGSV(ByVal lineArr As Array)
-
-        'Dim noOfmsg, seqNo, satInview, elevation, azimuth, snr, sateltiteCountNo As Integer
-        'Dim satID(3) As Integer
 
         BU353_GPGSV.globalBU353ClassVar(lineArr)
 
@@ -456,7 +453,7 @@ Public Class frmGpsUI
 
 #Region "Display"
     'Map View
-    Sub refreshScreen2() Handles Timer2.Tick
+    Sub refreshScreen2() Handles tmrGraphicsRefresh.Tick
         gfx2.FillRectangle(tBrush2, New Rectangle(0, 0, 300, 300))
         gfx2.FillRectangle(Brushes.Green, SpriteX2, SpriteY2, 15, 15)
         PictureBox2.Image = output2
@@ -790,6 +787,5 @@ Public Class frmGpsUI
     End Function
 
 #End Region
-
 
 End Class
