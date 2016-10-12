@@ -303,24 +303,34 @@ Public Class frmGpsUI
 
     Private Sub readGPGSV(ByVal lineArr As Array)
 
-        Dim noOfmsg, seqNo, satInview, elevation, azimuth, snr, sateltiteCountNo As Integer
-        Dim satID(3) As Integer
+        'Dim noOfmsg, seqNo, satInview, elevation, azimuth, snr, sateltiteCountNo As Integer
+        'Dim satID(3) As Integer
 
         BU353_GPGSV.globalBU353ClassVar(lineArr)
 
-        noOfmsg = GPGSV_Class.NoOfMsg
-        seqNo = GPGSV_Class.SequenceNo
-        satInview = GPGSV_Class.SatsInView
+        lblNoOfMsgs.Text = "# Of Messages: " & GPGSV_Class.NoOfMsgs.ToString
+        lblMsgNo.Text = "Message #: " & GPGSV_Class.msgNo.ToString
+        lblTotalNoOfSVs.Text = "Total # Of SVs : " & GPGSV_Class.totalNoOfSV.ToString
 
-        For idNo = 0 To sateltiteCountNo
-            satID(idNo) = GPGSV_Class.SatID(idNo)
-        Next
+        lblSvPrNo0.Text = "SV PR Number: " & GPGSV_Class.svPRNno(0).ToString
+        lblElevation0.Text = "Elevation: " & GPGSV_Class.Elevation(0).ToString
+        lblAzimuth0.Text = "Azimuth: " & GPGSV_Class.Azimuth(0).ToString
+        lblSNR0.Text = "SNR: " & GPGSV_Class.SNR(0).ToString
 
-        elevation = GPGSV_Class.Elevation
-        azimuth = GPGSV_Class.Azimuth
-        snr = GPGSV_Class.SNR
+        lblSvPrNo1.Text = "SV PR Number: " & GPGSV_Class.svPRNno(1).ToString
+        lblElevation1.Text = "Elevation: " & GPGSV_Class.Elevation(1).ToString
+        lblAzimuth1.Text = "Azimuth: " & GPGSV_Class.Azimuth(1).ToString
+        lblSNR1.Text = "SNR: " & GPGSV_Class.SNR(1).ToString
 
-        lblNoSat.Text = "# SVs visible: " & satInview
+        lblSvPrNo2.Text = "SV PR Number: " & GPGSV_Class.svPRNno(2).ToString
+        lblElevation2.Text = "Elevation: " & GPGSV_Class.Elevation(2).ToString
+        lblAzimuth2.Text = "Azimuth: " & GPGSV_Class.Azimuth(2).ToString
+        lblSNR2.Text = "SNR: " & GPGSV_Class.SNR(2).ToString
+
+        lblSvPrNo3.Text = "SV PR Number: " & GPGSV_Class.svPRNno(3).ToString
+        lblElevation3.Text = "Elevation: " & GPGSV_Class.Elevation(3).ToString
+        lblAzimuth3.Text = "Azimuth: " & GPGSV_Class.Azimuth(3).ToString
+        lblSNR3.Text = "SNR: " & GPGSV_Class.SNR(3).ToString
 
     End Sub
 
