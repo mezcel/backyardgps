@@ -20,13 +20,16 @@
 
 #Region "Global_Vars"
     Public Shared sentenceID As String
-    Public Shared NoOfMsg As Integer
-    Public Shared SequenceNo As Integer
-    Public Shared SatsInView As Integer ' 0-12
-    Public Shared SatID(3) As Integer ' Maximally 4 satellites are included in each GSV sentence
-    Public Shared Elevation As Integer
-    Public Shared Azimuth As Integer
-    Public Shared SNR As Integer
+
+    Public Shared NoOfMsgs As Integer
+    Public Shared msgNo As Integer
+    Public Shared totalNoOfSV As Integer
+
+    Public Shared svPRNno(3) As Integer
+    Public Shared Elevation(3) As Integer
+    Public Shared Azimuth(3) As Integer
+    Public Shared SNR(3) As Integer
+
     Public Shared CHECKSUM As Integer
 
 #End Region
@@ -36,30 +39,60 @@
         Dim SatIDCount As String = 0
         Dim lengthN As Integer = bu353Sentence.Length
 
+        Array.Clear(svPRNno, 0, 3)
+        Array.Clear(Elevation, 0, 3)
+        Array.Clear(Azimuth, 0, 3)
+        Array.Clear(SNR, 0, 3)
+
         sentenceID = bu353Sentence(0)
 
         For word = 1 To (lengthN - 1)
             Select Case word
                 Case 1
-                    NoOfMsg = bu353Sentence(word)
+                    NoOfMsgs = bu353Sentence(word)
                 Case 2
-                    SequenceNo = bu353Sentence(word)
+                    msgNo = bu353Sentence(word)
                 Case 3
-                    SatsInView = bu353Sentence(word)
-                    'Case 4 To 8
-                    'If (bu353Sentence(word) <> "") Then
-                    '    SatID(word - 4) = Convert.ToInt16(bu353Sentence(word))
-                    '    SatIDCount = SatIDCount + 1
-                    'End If
-                Case 16
-                    Elevation = bu353Sentence(word)
+                    totalNoOfSV = bu353Sentence(word)
+                Case 4 ' To 7
+                    '(0)
+                    svPRNno(0) = bu353Sentence(word)
+                Case 5
+                    Elevation(0) = bu353Sentence(word)
+                Case 6
+                    Azimuth(0) = bu353Sentence(word)
+                Case 7
+                    SNR(0) = bu353Sentence(word)
+                Case 8 ' To 11
+                    '(1)
+                    svPRNno(1) = bu353Sentence(word)
+                Case 9
+                    Elevation(1) = bu353Sentence(word)
+                Case 10
+                    Azimuth(1) = bu353Sentence(word)
+                Case 11
+                    SNR(1) = bu353Sentence(word)
+
+                Case 12 ' To 15
+                    '(2)
+                    svPRNno(2) = bu353Sentence(word)
+                Case 13
+
+                    Elevation(2) = bu353Sentence(word)
+                Case 14
+                    Azimuth(2) = bu353Sentence(word)
+                Case 15
+                    SNR(2) = bu353Sentence(word)
+                Case 16 'To 19
+                    '(3)
+                    svPRNno(3) = bu353Sentence(word)
                 Case 17
-                    Azimuth = bu353Sentence(word)
+                    Elevation(3) = bu353Sentence(word)
                 Case 18
-                    SNR = bu353Sentence(word)
+                    Azimuth(3) = bu353Sentence(word)
                 Case 19
                     centenceParse = Split(bu353Sentence(word), "*")
-                    SNR = centenceParse(0)
+                    SNR(3) = centenceParse(0)
                     CHECKSUM = centenceParse(1)
             End Select
 

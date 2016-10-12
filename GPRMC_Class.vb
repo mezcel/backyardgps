@@ -1,4 +1,4 @@
-Public Class GPRMC_Class
+﻿Public Class GPRMC_Class
 
 #Region "GPGMC_Notes"
     '    RMC - NMEA has its own version of essential gps pvt (position, velocity, time) data. It is called RMC, The Recommended Minimum, which will look similar to:

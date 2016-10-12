@@ -1,4 +1,4 @@
-'Imports WindowsApplication1.frmGpsUI
+﻿'Imports WindowsApplication1.frmGpsUI
 
 Public Class GPGGA_Class
 

@@ -23,7 +23,7 @@
     Public Shared sentenceID As String
     Public Shared MODE1 As String
     Public Shared MODE2 As Integer
-    Public Shared SatID(11) As Integer ' Maximally 12 satellites are included in each GSA sentence
+    Public Shared SatID(11) As Integer  ' Maximally 12 satellites are included in each GSA sentence
     Public Shared SatIDCount As Integer
     Public Shared PDOP As Double
     Public Shared HDOP As Double
@@ -34,6 +34,7 @@
 
     Public Sub globalBU353ClassVar(ByVal bu353Sentence As Array)
         Dim centenceParse() As String
+        Array.Clear(SatID, 0, 11)
 
         Dim lengthN As Integer = bu353Sentence.Length
         sentenceID = bu353Sentence(0)
