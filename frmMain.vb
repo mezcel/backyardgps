@@ -81,24 +81,27 @@ Public Class frmGpsUI
 
         Try
             tmrBaud.Enabled = False
-            spBU353.Close()
-
             GetSerialPortNames() 'fill combobox with COM port names
 
-            If ((cbxCOM.Items.Count > 0) And (spBU353.IsOpen = False)) Then
+            spBU353.Close()
+
+            If (cbxCOM.Items.Count > 0) Then
                 cbxCOM.SelectedIndex = 0
                 spBU353.PortName = cbxCOM.SelectedItem
 
                 btnUpdate.Enabled = True
-                'lostSignalHz.Text = "Select COM Port and Press START Button. The displayed COM is default."
+                lostSignalHz.Text = "Select COM Port and Press START Button. The displayed COM is default."
 
                 spBU353.Open()
                 btnUpdate.Enabled = True
-                btnUpdate.Text = "START" & Environment.NewLine & ChrW(&H25B6)
-                tmrBaud.Enabled = True
-                btnUpdate.BackColor = Color.MediumSeaGreen
+                cbxCOM.Enabled = True
+
+                If (spBU353.IsOpen = False) Then
+                    tmrBaud.Enabled = True
+                End If
 
             Else
+                'NoSerialComDisp()
                 btnUpdate.Enabled = False
                 btnUpdate.BackColor = Color.LightCoral
                 btnUpdate.Text = "Disabled Untill A GPS COM Port is selected"
@@ -152,7 +155,8 @@ Public Class frmGpsUI
             'enterRecord() 'write to text file
             lostSignalHz.Text = receptionLossHz.ToString + " lost signals since " + appStartUPTimeInstance + " Local, " + AntennaTime + " UTC"
         Else
-            lostSignalHz.Text = "Refresh 'START/PAUSE Button'"
+            'lostSignalHz.Text = "Refresh 'START/PAUSE Button'"
+            NoSerialComDisp()
         End If
 
         If (startstop = True) Then
@@ -361,10 +365,6 @@ Public Class frmGpsUI
                                         positionView(hsbZoom.Value)
                                     End If
 
-                                    'If (startPointReset = True) Then
-                                    'positionView(hsbZoom.Value)
-                                    'End If
-
                                 Catch
                                     SpottyFixDisplayData("!", "!")
 
@@ -406,7 +406,9 @@ Public Class frmGpsUI
                         Case Else
                             receptionLossHz = receptionLossHz + 1
                             BadHzCounter(receptionLossHz, 10, 0)
+
                     End Select
+
                 Next
             End If
         Else
@@ -430,21 +432,19 @@ Public Class frmGpsUI
             If (cbxCOM.Items.Count > 0) Then
                 cbxCOM.SelectedIndex = 0
                 lostSignalHz.Text = "Select COM Port and Press START Button. The displayed COM is default."
+                Return
+
             Else
-                btnUpdate.Text = "No COM Port Detected"
-                btnUpdate.BackColor = Color.Thistle
-                lostSignalHz.Text = "Plug in a GPS USB. Refresh COM or Restart App. Displayed COM is default"
-                btnUpdate.Enabled = False
+                NoSerialComDisp()
+                Return
             End If
 
         Catch ex As Exception
 
             MessageBox.Show(ex.Message)
-            tmrBaud.Enabled = False
-            btnUpdate.Text = "No COM Port Detected"
-            btnUpdate.BackColor = Color.Thistle
-
+            NoSerialComDisp()
             Return
+
         End Try
 
     End Sub
@@ -578,12 +578,19 @@ Public Class frmGpsUI
 
     End Sub
     Private Sub NoSerialComDisp()
+        startstop = False 'toggle on/off state
+        btnUpdate.BackColor = Color.LightCoral
+
         txtLatitude.Text = "No GPS RX"
         txtLongitude.Text = "ERROR"
         btnUpdate.Text = "Check GPS USB"
-        lostSignalHz.Text = "Antenna Could Be Unpluged. Turn OFF App and plug in the USB"
+        lostSignalHz.Text = "Antenna Could Be Unpluged. Plug-in & Refresh COM"
+
+        tmrBaud.Enabled = False
         btnUpdate.Enabled = False
         gpsFix = False
+        btnUpdateComPortNumber.Enabled = True
+
     End Sub
     Private Sub BadHzCounter(ByVal count As String, ByVal length As Integer, ByVal AntennaTime As Integer)
         If (count > 0) Then
@@ -714,9 +721,9 @@ Public Class frmGpsUI
 
         GetSerialPortNames() 'load the combobox with COM names
 
-        btnDecimalDegree.Text = "degree coordinate" & Environment.NewLine & "E/W 00" & ChrW(&HB0) & ".00' 00''"
-        btnUpdate.Text = "START" & Environment.NewLine & ChrW(&H25B6)
-        btnLog.Text = "LOG" & Environment.NewLine & ChrW(&H4E66) 'Unicode Han Character 'book, letter, document; writings' (U+4E66)
+        'btnDecimalDegree.Text = "degree coordinate" & Environment.NewLine & "E/W 00" & ChrW(&HB0) & ".00' 00''"
+        'btnUpdate.Text = "START" & Environment.NewLine & ChrW(&H25B6)
+        'btnLog.Text = "LOG" & Environment.NewLine & ChrW(&H4E66) 'Unicode Han Character 'book, letter, document; writings' (U+4E66)
         hsbZoom.Value = 1
 
         Me.Size = New System.Drawing.Size(510, 676)
