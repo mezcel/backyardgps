@@ -33,7 +33,7 @@ Partial Class frmGpsUI
         Me.txtLongitude = New System.Windows.Forms.TextBox()
         Me.txtLogDisp = New System.Windows.Forms.TextBox()
         Me.btnLog = New System.Windows.Forms.Button()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrGraphicsRefresh = New System.Windows.Forms.Timer(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.txtHirizDilution = New System.Windows.Forms.TextBox()
@@ -106,6 +106,18 @@ Partial Class frmGpsUI
         Me.lblSvPrNo2 = New System.Windows.Forms.Label()
         Me.lblNoOfMsgs = New System.Windows.Forms.Label()
         Me.lblMsgNo = New System.Windows.Forms.Label()
+        Me.lblSatID0 = New System.Windows.Forms.Label()
+        Me.lblSatID1 = New System.Windows.Forms.Label()
+        Me.lblSatID2 = New System.Windows.Forms.Label()
+        Me.lblSatID3 = New System.Windows.Forms.Label()
+        Me.lblSatID7 = New System.Windows.Forms.Label()
+        Me.lblSatID6 = New System.Windows.Forms.Label()
+        Me.lblSatID5 = New System.Windows.Forms.Label()
+        Me.lblSatID4 = New System.Windows.Forms.Label()
+        Me.lblSatID11 = New System.Windows.Forms.Label()
+        Me.lblSatID10 = New System.Windows.Forms.Label()
+        Me.lblSatID9 = New System.Windows.Forms.Label()
+        Me.lblSatID8 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -192,10 +204,10 @@ Partial Class frmGpsUI
         Me.btnLog.Text = "LOG"
         Me.btnLog.UseVisualStyleBackColor = False
         '
-        'Timer2
+        'tmrGraphicsRefresh
         '
-        Me.Timer2.Enabled = True
-        Me.Timer2.Interval = 10
+        Me.tmrGraphicsRefresh.Enabled = True
+        Me.tmrGraphicsRefresh.Interval = 10
         '
         'TextBox1
         '
@@ -513,9 +525,9 @@ Partial Class frmGpsUI
         Me.lblTotalNoOfSVs.AutoSize = True
         Me.lblTotalNoOfSVs.Location = New System.Drawing.Point(688, 152)
         Me.lblTotalNoOfSVs.Name = "lblTotalNoOfSVs"
-        Me.lblTotalNoOfSVs.Size = New System.Drawing.Size(50, 13)
+        Me.lblTotalNoOfSVs.Size = New System.Drawing.Size(77, 13)
         Me.lblTotalNoOfSVs.TabIndex = 49
-        Me.lblTotalNoOfSVs.Text = "# Of SVs"
+        Me.lblTotalNoOfSVs.Text = "Total # Of SVs"
         '
         'lblSOG
         '
@@ -538,7 +550,7 @@ Partial Class frmGpsUI
         'noofsats
         '
         Me.noofsats.AutoSize = True
-        Me.noofsats.Location = New System.Drawing.Point(496, 52)
+        Me.noofsats.Location = New System.Drawing.Point(599, 39)
         Me.noofsats.Name = "noofsats"
         Me.noofsats.Size = New System.Drawing.Size(62, 13)
         Me.noofsats.TabIndex = 56
@@ -616,9 +628,9 @@ Partial Class frmGpsUI
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(648, 415)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.Size = New System.Drawing.Size(64, 13)
         Me.Label5.TabIndex = 69
-        Me.Label5.Text = "NorthSouth"
+        Me.Label5.Text = "North South"
         '
         'txtRMC_EW
         '
@@ -850,12 +862,132 @@ Partial Class frmGpsUI
         Me.lblMsgNo.TabIndex = 96
         Me.lblMsgNo.Text = "Message #"
         '
+        'lblSatID0
+        '
+        Me.lblSatID0.AutoSize = True
+        Me.lblSatID0.Location = New System.Drawing.Point(599, 52)
+        Me.lblSatID0.Name = "lblSatID0"
+        Me.lblSatID0.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID0.TabIndex = 97
+        Me.lblSatID0.Text = "Sat. ID"
+        '
+        'lblSatID1
+        '
+        Me.lblSatID1.AutoSize = True
+        Me.lblSatID1.Location = New System.Drawing.Point(599, 65)
+        Me.lblSatID1.Name = "lblSatID1"
+        Me.lblSatID1.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID1.TabIndex = 98
+        Me.lblSatID1.Text = "Sat. ID"
+        '
+        'lblSatID2
+        '
+        Me.lblSatID2.AutoSize = True
+        Me.lblSatID2.Location = New System.Drawing.Point(599, 78)
+        Me.lblSatID2.Name = "lblSatID2"
+        Me.lblSatID2.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID2.TabIndex = 99
+        Me.lblSatID2.Text = "Sat. ID"
+        '
+        'lblSatID3
+        '
+        Me.lblSatID3.AutoSize = True
+        Me.lblSatID3.Location = New System.Drawing.Point(599, 91)
+        Me.lblSatID3.Name = "lblSatID3"
+        Me.lblSatID3.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID3.TabIndex = 100
+        Me.lblSatID3.Text = "Sat. ID"
+        '
+        'lblSatID7
+        '
+        Me.lblSatID7.AutoSize = True
+        Me.lblSatID7.Location = New System.Drawing.Point(662, 91)
+        Me.lblSatID7.Name = "lblSatID7"
+        Me.lblSatID7.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID7.TabIndex = 104
+        Me.lblSatID7.Text = "Sat. ID"
+        '
+        'lblSatID6
+        '
+        Me.lblSatID6.AutoSize = True
+        Me.lblSatID6.Location = New System.Drawing.Point(662, 78)
+        Me.lblSatID6.Name = "lblSatID6"
+        Me.lblSatID6.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID6.TabIndex = 103
+        Me.lblSatID6.Text = "Sat. ID"
+        '
+        'lblSatID5
+        '
+        Me.lblSatID5.AutoSize = True
+        Me.lblSatID5.Location = New System.Drawing.Point(662, 65)
+        Me.lblSatID5.Name = "lblSatID5"
+        Me.lblSatID5.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID5.TabIndex = 102
+        Me.lblSatID5.Text = "Sat. ID"
+        '
+        'lblSatID4
+        '
+        Me.lblSatID4.AutoSize = True
+        Me.lblSatID4.Location = New System.Drawing.Point(662, 52)
+        Me.lblSatID4.Name = "lblSatID4"
+        Me.lblSatID4.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID4.TabIndex = 101
+        Me.lblSatID4.Text = "Sat. ID"
+        '
+        'lblSatID11
+        '
+        Me.lblSatID11.AutoSize = True
+        Me.lblSatID11.Location = New System.Drawing.Point(725, 91)
+        Me.lblSatID11.Name = "lblSatID11"
+        Me.lblSatID11.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID11.TabIndex = 108
+        Me.lblSatID11.Text = "Sat. ID"
+        '
+        'lblSatID10
+        '
+        Me.lblSatID10.AutoSize = True
+        Me.lblSatID10.Location = New System.Drawing.Point(725, 78)
+        Me.lblSatID10.Name = "lblSatID10"
+        Me.lblSatID10.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID10.TabIndex = 107
+        Me.lblSatID10.Text = "Sat. ID"
+        '
+        'lblSatID9
+        '
+        Me.lblSatID9.AutoSize = True
+        Me.lblSatID9.Location = New System.Drawing.Point(725, 65)
+        Me.lblSatID9.Name = "lblSatID9"
+        Me.lblSatID9.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID9.TabIndex = 106
+        Me.lblSatID9.Text = "Sat. ID"
+        '
+        'lblSatID8
+        '
+        Me.lblSatID8.AutoSize = True
+        Me.lblSatID8.Location = New System.Drawing.Point(725, 52)
+        Me.lblSatID8.Name = "lblSatID8"
+        Me.lblSatID8.Size = New System.Drawing.Size(40, 13)
+        Me.lblSatID8.TabIndex = 105
+        Me.lblSatID8.Text = "Sat. ID"
+        '
         'frmGpsUI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(804, 637)
+        Me.Controls.Add(Me.lblSatID11)
+        Me.Controls.Add(Me.lblSatID10)
+        Me.Controls.Add(Me.lblSatID9)
+        Me.Controls.Add(Me.lblSatID8)
+        Me.Controls.Add(Me.lblSatID7)
+        Me.Controls.Add(Me.lblSatID6)
+        Me.Controls.Add(Me.lblSatID5)
+        Me.Controls.Add(Me.lblSatID4)
+        Me.Controls.Add(Me.lblSatID3)
+        Me.Controls.Add(Me.lblSatID2)
+        Me.Controls.Add(Me.lblSatID1)
+        Me.Controls.Add(Me.lblSatID0)
         Me.Controls.Add(Me.lblMsgNo)
         Me.Controls.Add(Me.lblNoOfMsgs)
         Me.Controls.Add(Me.lblSNR3)
@@ -956,7 +1088,7 @@ Partial Class frmGpsUI
     Friend WithEvents txtLogDisp As System.Windows.Forms.TextBox
     Friend WithEvents btnLog As System.Windows.Forms.Button
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents tmrGraphicsRefresh As System.Windows.Forms.Timer
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
@@ -1028,5 +1160,17 @@ Partial Class frmGpsUI
     Friend WithEvents lblSvPrNo2 As System.Windows.Forms.Label
     Friend WithEvents lblNoOfMsgs As System.Windows.Forms.Label
     Friend WithEvents lblMsgNo As System.Windows.Forms.Label
+    Friend WithEvents lblSatID0 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID1 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID2 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID3 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID7 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID6 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID5 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID4 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID11 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID10 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID9 As System.Windows.Forms.Label
+    Friend WithEvents lblSatID8 As System.Windows.Forms.Label
 
 End Class
