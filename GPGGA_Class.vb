@@ -1,4 +1,4 @@
-﻿'Imports WindowsApplication1.frmGpsUI
+'Imports WindowsApplication1.frmGpsUI
 
 Public Class GPGGA_Class
 
@@ -70,14 +70,14 @@ Public Class GPGGA_Class
 #Region "ClassSubroutines"
 
     Public Sub globalBU353ClassVar(ByVal bu353Sentence As Array, ByVal DecimalDegree As Boolean)
-
+        Dim centenceParse() As String
         Dim lengthN As Integer = bu353Sentence.Length
         sentenceID = bu353Sentence(0)
 
-        lengthN = 13 '13 used out of 15 slots
+        'lengthN = 14 '13 used out of 15 slots
             ' In $GPGGA (13) and (14) are null, the length will 2 Words Short
-        differentialSeconds = 0 '13   = Age in seconds since last update from diff. reference station
-        differentialStationID = "" '14   = Diff. reference station ID# 
+        'differentialSeconds = 0 '13   = Age in seconds since last update from diff. reference station
+        'differentialStationID = "" '14   = Diff. reference station ID# 
 
         For word = 1 To (lengthN)
             Select Case word
@@ -136,9 +136,20 @@ Public Class GPGGA_Class
                 Case 12 '12   = Meters  (Units of geoidal separation)
                     unitsofGeoTideSep = bu353Sentence(word)
                 Case 13 '15   = Checksum
-                    'checkSum = checksumCalculator(bu353Sentence)
+                    If (bu353Sentence(word) = "") Then
+                        differentialSeconds = 0.0
+                    Else
+                        differentialSeconds = Convert.ToDouble(bu353Sentence(word))
+                    End If
+
+
+                Case 14
+                    centenceParse = Split(bu353Sentence(word), "*")
+
+                    differentialStationID = centenceParse(0) '14
+                    checkSum = centenceParse(1) '15
                 Case Else
-                    checkSumFlag = False 'a full signal was not recieved
+                    checkSumFlag = False 'a proper signal was not recieved
             End Select
         Next
 
