@@ -463,6 +463,7 @@ Public Class frmGpsUI
 
         Dim x1, x2, y1, y2, distanceX, distanceY, distanceXY As Double
         Dim unitOfMeasure As Char
+        Dim updown, leftright As Integer 'used for graphic display only
 
         y1 = GPGGA_Class.lonPosition
         y2 = initialLongitude
@@ -472,14 +473,27 @@ Public Class frmGpsUI
 
         unitOfMeasure = "M" 'miles
 
+        'i want to give a relative direction, from initial position
+        If (y2 > y1) Then 'go up
+            updown = 1
+        Else 'go down
+            updown = -1
+        End If
+
+        If (x2 > x1) Then 'go rt
+            leftright = 1
+        Else 'go lt
+            leftright = -1
+        End If
+
         If ((GPGGA_Class.latPosition <> Nothing) And (initialLongitude <> Nothing) And (GPGGA_Class.lonPosition <> Nothing) And (initialLatitude <> Nothing)) Then
 
             distanceX = distance(x1, 0, x2, 0, unitOfMeasure)
             distanceY = distance(0, y1, 0, y2, unitOfMeasure)
             distanceXY = distance(x1, y1, x2, y2, unitOfMeasure) 'un used for now
 
-            SpriteX2 = (distanceX * (10 ^ zoomFactor)) + 150
-            SpriteY2 = (distanceY * (10 ^ zoomFactor)) + 150
+            SpriteX2 = leftright * (distanceX * (10 ^ zoomFactor)) + 150
+            SpriteY2 = updown * (distanceY * (10 ^ zoomFactor)) + 150
 
             TextBox1.Text = SpriteX2 - 150
             TextBox2.Text = SpriteY2 - 150
