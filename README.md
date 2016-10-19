@@ -1,4 +1,4 @@
-# Lat/Lon Coordinates via GPS Radio Signal (no internet/off grid)
+# Lat/Lon Coordinates via GPS Radio Signal
 
 This application is developed in VB/NET
 
