@@ -1,4 +1,4 @@
-# View actual Lat/Lon Coordinates via GPS Radio Signal (no internet/off grid)
+# Lat/Lon Coordinates via GPS Radio Signal (no internet/off grid)
 
 This application is developed in VB/NET
 
@@ -13,7 +13,7 @@ The code layout employed the "["XAML Regions"](https://visualstudiogallery.msdn.
 
 [App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
 
-# What to expect from this Application:
+## What to expect from this Application:
 
 * Input GPS Radio Signal Location Information via a GPS antenna
 * Select from a list of USB ports to receive your GPS antenna
