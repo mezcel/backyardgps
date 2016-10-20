@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- http://www.sosmath.com/trig/Trig2/trig2/trig2.html -->
+<!-- https://thenauticalalmanac.com/Formulas.html#To_determine_Hc_using_a_calculator -->
+<!-- http://thenauticalalmanac.com/Chapt-17%20AZIMUTHS%20AND%20AMPLITUDES.pdf -->
+
+<!-- Determine Z (azimuth) -->
+<!-- Z  = cos-1[(sin(declination) – sin(Latitude) x sin(Hc)) / (cos(Latitude) x cos(Hc))] -->
+<!-- Z = tan-1 (sin (LHA) / (cos (LHA) x sin(AP Latitude) - cos(AP Latitude) x tan(declination)) -->
+
+<!-- To determine Hc using a calculator -->
+<!-- Hc = sin-1[sin(declination) x sin(Latitude) + (cos(Latitude) x cos(declination) x cos(LHA)] -->
+
+<!-- Determine Local Apparent Noon using GHA -->
+<!-- ((Your Longitude – Sun GHA less than your Longitude) / 15) + GHA integral hour -->
+<!-- (Your Longitude – GHA less than your Longitude) -->
+
+<!--
+
+Hc = Computed altitude
+
+Zn = Computed azimuth,The simplest definition of azimuth is the bearing of a heavenly body from a fixed point on land or at sea. To be more precise, we might say azimuth is the bearing to the body's geographical position (the celestial coordinates of declination and hour angle reformulated as latitude and longitude). Mathematically, the bearing is measured the shortest way from the poles, east or west of an observer's meridian to a maximum of l80°.
+
+lat = Latitude
+
+dec = Declination, This marks the height above or below the equatorial plane for celestial objects. Equivalent to the latitude on earth. it is followed by North or South same as latitude.
+
+LHA = Local Hour Angle In astro navigation, we need to know the position of a celestial body relative to our own position. Due to the Earth’s rotation, the Sun moves through 15o of longitude in 1 hour and it moves through 15 minutes of arc in 1 minute of time.
+the angle between the meridian of the celestial object and the meridian of the observer, LHA = GHA(of celestial object) - Longitude (of observer)
+Rules for calculating LHA:
+Long East, LHA = GHA + LONG (- 360o as necessary)
+Long West, LHA = GHA – LONG (+ 360o as necessary)
+https://astronavigationdemystified.com/local-hour-angle-and-greenwich-hour-angle/
+
+
+-->
+
+	<body>
+
+		<h1>JavaScript Math</h1>
+
+		<p>Math.PI returns the ratio of a circle's circumference to its diameter:</p>
+
+		<p id="demo"> </p>
+		<p id="Zazimuth"> </p>
+
+		<script>
+
+			var pitest = Math.PI;
+			document.getElementById("demo").innerHTML = pitest + " = pi";
+			
+			var declination = 4.69; <!-- difference between true and magnetic north  http://www.ngdc.noaa.gov/geomag-web/#declination -->
+			var Latitude = 30.121498; <!-- within 50-100 NM http://modernsurvivalblog.com/wp-content/uploads/2013/09/united-states-latitude-longitude.jpg -->
+			var LHA = 1;
+			
+			var Hc = Math.asin(Math.sin(declination) * Math.sin(Latitude) + (Math.cos(Latitude) * Math.cos(declination) * Math.cos(LHA)));
+			
+
+			var Zn = Math.acos((Math.sin(declination) - Math.sin(Latitude) * Math.sin(Hc)) / (Math.cos(Latitude) * Math.cos(Hc))); <!-- sun should should be arround 96 in the morning -->
+
+			document.getElementById("Zazimuth").innerHTML = Zn + " = Azimuth calc";
+
+		</script>
+
+	</body>
+	
+</html>
