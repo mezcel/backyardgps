@@ -13,3 +13,6 @@ I hope this becomes a nice backup to my existing system when I have bad GPS sign
 I am using stanalone JS and Html file (mucho light weight)
 
 It is faster than IDE since this hobby is more of a math calculation project vs. a programming project
+
+I will later use the .Net app to view the html.
+I will input and export desired data from the html
