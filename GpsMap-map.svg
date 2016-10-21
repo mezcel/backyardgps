@@ -4,7 +4,7 @@
 <svg height="278" onload="init(evt)" width="700" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
 	<g id="demis background" opacity="0.5" transform="translate(0,0)">
-		<image height="278" id="background map 1" opacity="1" width="700" x="0" xlink:href="C:\Users\Michael\Documents\GPSMaps\gps html\20x20blackBMP.bmp" y="0" />
+		<image height="278" id="background map 1" opacity="1" width="700" x="0" xlink:href="" y="0" />
 	</g>
 	
 	<!-- Walkway -->
@@ -50,6 +50,7 @@
 		<text fill="#0000cc" font-family="Verdana" font-size="8.25" id="trk3 desc" opacity="1" text-anchor="middle" x="548.979" y="157.4169">Length: 0.081 km (0.05 mi)</text>
 	</g>
 	
+	<!-- Waypoints -->
 	<g id="Waypoints">
 		<circle cx="426.5179" cy="148.3091" fill="#000000" fill-opacity="0" id="wpt1 marker" r="3" stroke="#000000" stroke-opacity="1" stroke-width="1.0" />
 		<g id="wpt1 label" transform="translate(0,0)" x="431.5179" y="148.3091">
