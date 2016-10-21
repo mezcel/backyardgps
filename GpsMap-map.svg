@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
 <svg height="278" onload="init(evt)" width="700" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
 	<g id="demis background" opacity="0.5" transform="translate(0,0)">
 		<image height="278" id="background map 1" opacity="1" width="700" x="0" xlink:href="C:\Users\Michael\Documents\GPSMaps\gps html\20x20blackBMP.bmp" y="0" />
 	</g>
+	
+	<!-- Walkway -->
 	<g id="trk1 track" opacity="1">
 		<line fill="none" id="t1 p1" stroke="#cc0000" stroke-width="2" x1="40.0000" x2="79.0704" y1="126.8996" y2="120.4171" />
 		<line fill="none" id="t1 p2" stroke="#cc0000" stroke-width="2" x1="79.0704" x2="181.7516" y1="120.4171" y2="148.1689" />
@@ -14,9 +18,11 @@
 		<line fill="none" id="t1 p7" stroke="#cc0000" stroke-width="2" x1="397.6095" x2="451.6953" y1="165.4788" y2="148.0288" />
 	</g>
 	<g id="trk1 label" opacity="1" transform="translate(0,0)" x="42" y="126.8996">
-		<text fill="#cc0000" font-family="Verdana" font-size="11" id="trk1 name" opacity="1" text-anchor="middle" x="42" y="126.8996">78riverCourt_GPX 1</text>
+		<text fill="#cc0000" font-family="Verdana" font-size="11" id="trk1 name" opacity="1" text-anchor="middle" x="42" y="126.8996">Walkway</text>
 		<text fill="#cc0000" font-family="Verdana" font-size="8.25" id="trk1 desc" opacity="1" text-anchor="middle" x="42" y="137.8996">Length: 0.134 km (0.083 mi)</text>
 	</g>
+	
+	<!-- Property Boundary -->
 	<g id="trk2 track" opacity="1">
 		<line fill="none" id="t2 p1" stroke="#00cc01" stroke-width="2" x1="91.2647" x2="106.3105" y1="44.0647" y2="238.1871" />
 		<line fill="none" id="t2 p2" stroke="#00cc01" stroke-width="2" x1="106.3105" x2="660.0000" y1="238.1871" y2="196.7696" />
@@ -24,9 +30,11 @@
 		<line fill="none" id="t2 p4" stroke="#00cc01" stroke-width="2" x1="510.6952" x2="91.2647" y1="40.0000" y2="44.0647" />
 	</g>
 	<g id="trk2 label" opacity="1" transform="translate(0,0)" x="93.2647" y="44.0647">
-		<text fill="#00cc01" font-family="Verdana" font-size="11" id="trk2 name" opacity="1" text-anchor="middle" x="93.2647" y="44.0647">78riverCourt_GPX 2</text>
+		<text fill="#00cc01" font-family="Verdana" font-size="11" id="trk2 name" opacity="1" text-anchor="middle" x="93.2647" y="44.0647">Property Boundary</text>
 		<text fill="#00cc01" font-family="Verdana" font-size="8.25" id="trk2 desc" opacity="1" text-anchor="middle" x="93.2647" y="55.0647">Length: 0.307 km (0.191 mi)</text>
 	</g>
+	
+	<!-- Main Building -->
 	<g id="trk3 track" opacity="1">
 		<line fill="none" id="t3 p1" stroke="#0000cc" stroke-width="2" x1="550.9790" x2="477.7523" y1="146.4169" y2="178.8991" />
 		<line fill="none" id="t3 p2" stroke="#0000cc" stroke-width="2" x1="477.7523" x2="463.3133" y1="178.8991" y2="150.7269" />
@@ -38,14 +46,28 @@
 		<line fill="none" id="t3 p8" stroke="#0000cc" stroke-width="2" x1="516.7924" x2="550.9790" y1="83.8703" y2="146.4169" />
 	</g>
 	<g id="trk3 label" opacity="1" transform="translate(0,0)" x="548.979" y="146.4169">
-		<text fill="#0000cc" font-family="Verdana" font-size="11" id="trk3 name" opacity="1" text-anchor="middle" x="548.979" y="146.4169">78riverCourt_GPX 3</text>
+		<text fill="#0000cc" font-family="Verdana" font-size="11" id="trk3 name" opacity="1" text-anchor="middle" x="548.979" y="146.4169">Main Building</text>
 		<text fill="#0000cc" font-family="Verdana" font-size="8.25" id="trk3 desc" opacity="1" text-anchor="middle" x="548.979" y="157.4169">Length: 0.081 km (0.05 mi)</text>
 	</g>
-	<g id="Waypoints" />
+	
+	<g id="Waypoints">
+		<circle cx="426.5179" cy="148.3091" fill="#000000" fill-opacity="0" id="wpt1 marker" r="3" stroke="#000000" stroke-opacity="1" stroke-width="1.0" />
+		<g id="wpt1 label" transform="translate(0,0)" x="431.5179" y="148.3091">
+			<text fill="#000000" font-family="Verdana" font-size="11" id="wpt1 name" opacity="1" text-anchor="start" x="431.5179" y="148.3091">tree1</text>
+			<text fill="#000000" font-family="Verdana" font-size="8.25" id="wpt1 desc" opacity="1" text-anchor="start" x="431.5179" y="159.3091">magnolia tree</text>
+		</g>
+		<circle cx="396.1838" cy="113.2689" fill="#000000" fill-opacity="0" id="wpt2 marker" r="3" stroke="#000000" stroke-opacity="1" stroke-width="1.0" />
+		<g id="wpt2 label" transform="translate(0,0)" x="401.1838" y="113.2689">
+			<text fill="#000000" font-family="Verdana" font-size="11" id="wpt2 name" opacity="1" text-anchor="start" x="401.1838" y="113.2689">tree2</text>
+			<text fill="#000000" font-family="Verdana" font-size="8.25" id="wpt2 desc" opacity="1" text-anchor="start" x="401.1838" y="124.2689">magnolia tree</text>
+		</g>
+	</g>
+	
+	<!-- Legend -->
 	<g id="Legend" onmousedown="trackGroup(evt,'Legend',1)" onmousemove="moveGroup(evt,'Legend')" onmouseup="trackGroup(evt,'Legend',0)" transform="translate(0,0)" x="6" y="264.187062855738">
-		<text fill="#0000cc" font-family="Verdana" font-size="11" id="legend label 0" onmousedown="toggle_track_opacity_from_legend('78riverCourt_GPX 3 (t3)','legend label 0',0,0.25)" text-anchor="start" x="6" y="264.187062855738">78riverCourt_GPX 3</text>
-		<text fill="#00cc01" font-family="Verdana" font-size="11" id="legend label 1" onmousedown="toggle_track_opacity_from_legend('78riverCourt_GPX 2 (t2)','legend label 1',0,0.25)" text-anchor="start" x="6" y="253.187062855738">78riverCourt_GPX 2</text>
-		<text fill="#cc0000" font-family="Verdana" font-size="11" id="legend label 2" onmousedown="toggle_track_opacity_from_legend('78riverCourt_GPX 1 (t1)','legend label 2',0,0.25)" text-anchor="start" x="6" y="242.187062855738">78riverCourt_GPX 1</text>
+		<text fill="#0000cc" font-family="Verdana" font-size="11" id="legend label 0" onmousedown="toggle_track_opacity_from_legend('building track line','legend label 0',0,0.25)" text-anchor="start" x="6" y="264.187062855738">building</text>
+		<text fill="#00cc01" font-family="Verdana" font-size="11" id="legend label 1" onmousedown="toggle_track_opacity_from_legend('boundary track line','legend label 1',0,0.25)" text-anchor="start" x="6" y="253.187062855738">boundary</text>
+		<text fill="#cc0000" font-family="Verdana" font-size="11" id="legend label 2" onmousedown="toggle_track_opacity_from_legend('path track line','legend label 2',0,0.25)" text-anchor="start" x="6" y="242.187062855738">path</text>
 		<text fill="#000000" font-family="Verdana" font-size="11" id="legend header" onmouseout="highlight('Legend',0)" onmouseover="highlight('Legend',1)" text-anchor="start" x="6" y="228.437062855738">Tracks:</text>
 	</g>
 	<g id="Scale" onmousedown="trackGroup(evt,'Scale',1)" onmousemove="moveGroup(evt,'Scale')" onmouseout="highlight('Scale',0)" onmouseover="highlight('Scale',1)" onmouseup="trackGroup(evt,'Scale',0)" transform="translate(0,0)" x="350" y="139.093531427869">
@@ -56,11 +78,13 @@
 	</g>
 	<g id="Logo" onmousedown="trackGroup(evt,'Logo',1)" onmousemove="moveGroup(evt,'Logo')" onmouseout="highlight('Logo',0)" onmouseover="highlight('Logo',1)" onmouseup="trackGroup(evt,'Logo',0)" transform="translate(0,0)" x="350" y="275.187062855738">
 		<rect fill="#FFFFFF" height="11" id="logo box" opacity="0.6" width="160" x="270" y="266.187062855738" />
-		<a target="_blank" xlink:href="http://www.gpsvisualizer.com/">
-			<text fill="#000000" font-family="Verdana" font-size="9" id="logo_text" text-anchor="middle" transform="translate(350,275.187062855738) rotate(0) translate(-350,-275.187062855738)" x="350" y="275.187062855738">created by GPSVisualizer.com</text>
+		<a target="_blank" xlink:href="http://mezcel.wixsite.com/backyardgps">
+			<text fill="#000000" font-family="Verdana" font-size="9" id="logo_text" text-anchor="middle" transform="translate(350,275.187062855738) rotate(0) translate(-350,-275.187062855738)" x="350" y="275.187062855738">custom map</text>
 		</a>
 	</g>
+	
 	<rect fill="none" height="277" id="image_boundary" opacity="0" stroke="#000000" stroke-width="1" width="699" x="0.5" y="0.5" />
+	
 	<!-- debugging stuff:
  -->
 	<!-- key = 20161016203823-28066
@@ -102,4 +126,5 @@
 	by Ronan Oger
 	Info: http://www.roitsystems.com/
  -->
+ 
 </svg>
