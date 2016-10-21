@@ -1,3 +1,6 @@
+Notice! This is not a Git Project, enclosed are just coppies of my code
+
+
 # Latitude/Longitude Coordinates via GPS Radio Signal
 
 This application is developed in VB/NET
