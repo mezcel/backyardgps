@@ -16,3 +16,5 @@ It is faster than IDE since this hobby is more of a math calculation project vs.
 
 I will later use the .Net app to view the html.
 I will input and export desired data from the html
+
+I am considering further Development Using: HTML Renderer https://htmlrenderer.codeplex.com/
