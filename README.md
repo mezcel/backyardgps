@@ -10,7 +10,7 @@ This application is developed in VB/NET
 * Various forms of timing and scheduling  are used to capture recorded and real-time data to end user.
 * For the App Developer, this is a handy Skeleton Code-like kit.
 
-#### Code Snipit Note: Durring development, I used the ["XAML Regions"](https://visualstudiogallery.msdn.microsoft.com/3c534623-bb05-417f-afc0-c9e26bf0e177) plugin to help me keep track of my code. It is a small extension that adds the ability to define collapsable regions in XAML & XML code.
+##### Code Snipit Note: Durring development, I used the ["XAML Regions"](https://visualstudiogallery.msdn.microsoft.com/3c534623-bb05-417f-afc0-c9e26bf0e177) plugin to help me keep track of my code. It is a small extension that adds the ability to define collapsable regions in XAML & XML code.
 
 [App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
 
