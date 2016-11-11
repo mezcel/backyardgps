@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GPS GUI</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="indexCss.css" />
+    </head>    
+    <body>
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="index.html" class="logo">Testbench</a>
+                <nav id="nav">
+                    <a href="">Home</a>
+                    <a href="">Generic</a>
+                    <a href="">Elements</a>
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+        
+        <!-- Banner -->
+        <section id="banner">
+            <h1>GPS HTML GUI</h1>
+            <p>A Markup Language graphical user interface for a VB.NET  Program whcih recieves a Serail GPS Input.</p>
+        </section>
+        
+        <!-- One -->
+			<section id="MainSection" class="wrapper">
+                <center><a href="#" class="button special" id="locationStatusButton">Location Status</a> <a href="#" class="button special" id="metaInformationButton">Meta Information</a> <a href="#" class="button special" id="waypointLogButton">Waypoint Log</a></center><br>
+                
+				<div class="inner">
+					<div class="flex flex-3">
+						<article id="articleLocationStatus">                            
+							<header>
+								<h3>Current Location Status<br />(location, direction, speed)</h3>
+							</header>
+							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<footer>
+                                <div id="locationStatus">Location Status
+                                    Latitude(deg):
+                                    Longitude(deg):
+                                    Latitude(dec):
+                                    Longitude(dec):
+                                    Course:
+                                    Speed:
+                                </div>
+							</footer>
+                            
+						</article>
+						<article id="articleMetaInformation">
+                            
+							<header>
+								<h3>Signal Meta-data<br />(strength and reliability)</h3>
+							</header>
+							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<footer>
+                                <div id="metaInformation">Meta Information
+                                    Satelite Information:
+                                </div>
+							</footer>
+                            
+						</article>
+						<article id="articleWaypointLog">
+                            
+							<header>
+								<h3>Waypoint Markers Log<br />(marked location history)</h3>
+							</header>
+							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
+							<footer>
+                                <div id="waypointLog">Waypoint Log
+                                    <a href="#" class="button special" id="logWPT">log WPT</a>
+                                </div>
+							</footer>                            
+						</article>
+					</div>
+				</div>
+			</section>
+    </body>
+    
+    <script src="indexJS.js"></script>
+</html>
