@@ -1,83 +1,86 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>GPS GUI</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="indexCss.css" />
-    </head>    
-    <body>
-        <!-- Header -->
-        <header id="header">
-            <div class="inner">
-                <a href="index.html" class="logo">Testbench</a>
-                <nav id="nav">
-                    <a href="">Home</a>
-                    <a href="">Generic</a>
-                    <a href="">Elements</a>
-                </nav>
-                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+	<head>
+	  <title>Page Title</title>
+	  <link rel="stylesheet" href="mystyle.css">
+	</head>
+
+	<body>
+        <!-- serial gps -->
+        <div class="colmask">
+            
+            <div class="header">
+                <div id="topmostBanner">
+                    <b>Celestial Navigation / GPS Viewer GUI</b><hr>
+                    
+                    <button id="locationViewFocus">Location</button>
+                    <button id="metaViewFocus">Signal</button>
+                    <button id="logViewFocus">Log</button>
+                    <button id="celestialViewFocus">Celestial</button>
+                    <button id="allViewFocus">ALL</button>
+                </div>
             </div>
-        </header>
-        
-        <!-- Banner -->
-        <section id="banner">
-            <h1>GPS HTML GUI</h1>
-            <p>A Markup Language graphical user interface for a VB.NET  Program whcih recieves a Serail GPS Input.</p>
-        </section>
-        
-        <!-- One -->
-			<section id="MainSection" class="wrapper">
-                <center><a href="#" class="button special" id="locationStatusButton">Location Status</a> <a href="#" class="button special" id="metaInformationButton">Meta Information</a> <a href="#" class="button special" id="waypointLogButton">Waypoint Log</a></center><br>
+            
+            <div class="colmid">
+                <div class="colleft">
+                    
+                    <div class="col1">
+                        <b>Signal Meta:</b> <hr>
+                        <div id= "serial_info_meta">
+                            Signal Strenth:<br>
+                            No. of Satelites:<br>
+                            PDOP:<br>
+                        </div>
+                    </div>
+                    
+                    <div class="col2">
+                        <b>Location:</b><hr>
+                        <div id= "serial_info_main">
+                            Latitude:<div id="latitudeDiv"></div><br>
+                            Longitude:<div id="longitudeDiv"></div><br>
+                            Course/Bearing:<div id="angledirectionDIV"></div><br>
+                            Speed (knots):<div id="speedDiv"></div><br>
+                            Altitude:<div id="altitudeDiv"></div><br>
+                        </div>
+                    </div> 
+                    
+                    <div class="col3">
+                        <b>Datum Log:</b><hr>
+                        <button id="logButton">Datum Button</button>
+                        <div id= "waypoint_log">
+                            Last Datum:
+                            <div id="logDatumHistory"></div>
+                        </div>
+                    </div> 
+                    
+                </div> 
                 
-				<div class="inner">
-					<div class="flex flex-3">
-						<article id="articleLocationStatus">                            
-							<header>
-								<h3>Current Location Status<br />(location, direction, speed)</h3>
-							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-                                <div id="locationStatus">Location Status
-                                    Latitude(deg):
-                                    Longitude(deg):
-                                    Latitude(dec):
-                                    Longitude(dec):
-                                    Course:
-                                    Speed:
-                                </div>
-							</footer>
-                            
-						</article>
-						<article id="articleMetaInformation">
-                            
-							<header>
-								<h3>Signal Meta-data<br />(strength and reliability)</h3>
-							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-                                <div id="metaInformation">Meta Information
-                                    Satelite Information:
-                                </div>
-							</footer>
-                            
-						</article>
-						<article id="articleWaypointLog">
-                            
-							<header>
-								<h3>Waypoint Markers Log<br />(marked location history)</h3>
-							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-                                <div id="waypointLog">Waypoint Log
-                                    <a href="#" class="button special" id="logWPT">log WPT</a>
-                                </div>
-							</footer>                            
-						</article>
-					</div>
-				</div>
-			</section>
+            </div>
+            
+            <div class="footer">
+                <hr><b>Celestial Navigation Information:</b><hr>
+                <div id="celestial_navigation_region">
+                    <!-- I am going to use the brightest: https://en.wikipedia.org/wiki/List_of_selected_stars_for_navigation -->
+                    <b>Primary Heavenly Bodies:</b> <br>
+                    Azmuth: Sun () <br>
+                    Azmuth: Moon () <br>
+                    Azmuth: Polaris () <br>
+                    <hr>
+                    <b>Northern Stars:</b><br><!-- https://en.wikipedia.org/wiki/File:Navigational-stars-above-30-degrees-north.svg -->
+                    Azmuth: Vega () <br>
+                    Azmuth: Capella () <br>
+                    <hr>
+                    <b>Equatorial Stars:</b><br>
+                    Azmuth: Arcturus () <br>
+                    <hr>
+                    <b>Southern Stars:</b><br>
+                    Azmuth: Acrux () <br>
+                </div>
+                <hr>
+            </div>
+            
+        </div>
     </body>
-    
-    <script src="indexJS.js"></script>
+	<script type="text/javascript" src="myjscript.js" ></script>
 </html>

@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+/*---------------*/
+/* div id blocks */
+/*---------------*/
+
+html {
+    
+}
+
+body {
+    background: white;
+    font-style: normal;
+    padding: 2%;
+    min-width: 320px; /* the smallest in refference to iPhone3*/
+    max-width: 1080px;
+    margin:0 auto;
+}
+
+#topmostBanner {
+    border: 2px solid black;
+    text-align: center;
+    padding: .5em;
+}
+
+#information_container {
+    padding: 1%;
+    border: 3px solid black;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    border: none;
+    align-items: center;
+}
+
+#serial_info_main {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 1%;
+}
+
+#serial_info_meta {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 1%;
+}
+
+#waypoint_log {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 1%;
+}
+
+#celestial_navigation_region {
+    background-color: lightgray;
+    width:98%;
+    padding: 1%;
+    text-align: left;
+    font-style: normal;
+}
+
+#latitudeDiv {}
+#longitudeDiv {}
+#angledirectionDIV {}
+#speedDiv {}
+#altitudeDiv{}
+#logDatumHistory {}
+
+/*-----------------------------------------------*/
+/* Auto generated class code credits: -----------*/
+/* http://www.pagecolumn.com/3_col_generator.htm */
+/*-----------------------------------------------*/
+
+.colmask{
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+    min-width: 320px;
+    background-color: silver;
+}
+
+.header{
+   float: left;
+   width: 100%;
+}
+
+.colmid{
+   position: relative;
+   width: 100%;
+   right: 33%;
+}
+
+.colleft{
+   position: relative;
+   width: 100%;
+   right: 33%;
+}
+
+.col1{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 101%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.col2{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 32%;
+   left: 36%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.col3{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 71%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.footer{
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+/*----------------------*/
+/* button look and feel */
+/*----------------------*/
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #5a5a5a;
+    border-radius: 0;
+    border: 0;
+    color: white !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 2.85em;
+    line-height: 2.95em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover,
+    button:hover,
+    .button:hover {
+        background-color: silver;
+        color: red;
+    }
+
+    input[type="submit"]:active,
+    input[type="reset"]:active,
+    input[type="button"]:active,
+    button:active,
+    .button:active {
+        background-color: black;
+        color: purple;
+    }
