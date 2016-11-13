@@ -5,9 +5,7 @@ Imports System.Security.Permissions 'clear up any html/js/vb mixups
 Imports Microsoft.Win32 'used for registeryKey
 
 Public Class Form1
-
-
-
+    
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim urlstring As String
         urlstring = "C:/Users/Michael/Documents/HTML Related/GPS_GUI/Simple_Version/index.html"
@@ -39,6 +37,7 @@ Public Class Form1
         randomNumber2 = CInt(Math.Ceiling(Rnd() * n)) + 1
 
         html_element2.InnerText = randomNumber1.ToString + "." + randomNumber2.ToString
+        
     End Sub
 
     Private Sub logInHtmlDisplay()
@@ -52,14 +51,15 @@ Public Class Form1
     Private Sub wbHtmlIndex_Resize(sender As Object, e As EventArgs) Handles wbHtmlIndex.Resize
         lblWebContainer.Text = "Web Dimentions: " + wbHtmlIndex.Width.ToString + " x " + wbHtmlIndex.Height.ToString
 
-
     End Sub
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         lblAppContainer.Text = "App Dimentions: " + Me.Width.ToString + " x " + Me.Height.ToString
+        
     End Sub
 
     Private Sub btnRefreshBrowser_Click(sender As Object, e As EventArgs) Handles btnRefreshBrowser.Click
         wbHtmlIndex.Refresh()
+        
     End Sub
 End Class
