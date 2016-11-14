@@ -43,6 +43,9 @@ window.onload = function () {
     
     document.getElementById("saveDatumList").onclick = function () {
         
+        masterDivContents = masterDivContents + "</DIV>";
+        masterDivContents = masterDivContents + " <!-- to convert this list to a table (Delete the <ul> tag and replace it with: <table>) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements -->";
+        
         saveTextAsFile();
         //SaveContents();
     };
@@ -211,7 +214,7 @@ function logButtonPress(datum_counter) {
     lon = document.getElementById('longitudeDiv').innerText;
     datumHistory(lat, lon, datum_counter);
     
-    masterDivContents += " " + document.getElementById("waypoint_log").innerHTML;
+    masterDivContents = document.getElementById("waypoint_log").innerHTML;
 }
 
 function datumHistory(latInput, lonInput, datum_counter) {
