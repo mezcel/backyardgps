@@ -1,4 +1,4 @@
-var masterDivContents = "";
+var masterDivContents = ""; //avariable containing all the div contents
 
 window.onload = function () {
     'use strict';
@@ -42,16 +42,12 @@ window.onload = function () {
     };
     
     document.getElementById("saveDatumList").onclick = function () {
-        var filename, text;
-        //filename = "file:///C:/Users/Michael/Desktop/gpstemp/htmltext2.txt";
-        filename = "htmltext2.txt";
-        //text = text = document.getElementById("logDatumHistory").innerHTML;
         
-        //innerHtmltoCssfile(filename, text);
-        //require("asdf", filename);
-        //fileSeverdemo(filename, text);
-        SaveContents();
+        saveTextAsFile();
+        //SaveContents();
     };
+    
+    date_time('date_time');
 };
 
 /* display related */
@@ -266,9 +262,8 @@ function datumHistory(latInput, lonInput, datum_counter) {
 /* savine to a file **********************/
 
 function SaveContents() {
+    /* intended for IE8 */
     'use strict';
-    
-    
     if (document.execCommand) {
         
         var oWin = window.open("about:blank", "_blank");
@@ -285,18 +280,90 @@ function SaveContents() {
     }
 }
 
+function saveTextAsFile() {
+    /* https://jsfiddle.net/nekyouto/gokpfr00/ */
+    var fileNameToSaveAs, downloadLink, textFileAsBlob, textToWrite;
+    
+    //For Blobs, use \r\n for new line
+    textToWrite = masterDivContents; //pulled from my global var
+    
+    //Check if browser supports Blob
+    if (window.Blob) {
+        textFileAsBlob = new Blob([textToWrite], {
+            type: 'text/plain'
+        });
+        
+        //Need to specify the filename that we are going to set here
+        fileNameToSaveAs = "output.txt";
+        downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null) {
+            // Chrome allows the link to be clicked without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        } else {
+            // Firefox requires the link to be added to the DOM before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+        }
+        
+        if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(textFileAsBlob, fileNameToSaveAs);
+        } else {
+            downloadLink.click();
+        }
+        
+    } else {
+        /* Error/Solution Catch: used for IE8 */
+        SaveContents();
+    }
+}
+
+//Remove the downloadable link
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+
 /*****************************************/
 
-function lat() {
-    'use strict';
-    var para, t;
 
-    para = document.createElement("div");
-    t = document.createTextNode("This is a paragraph.");
-    para.appendChild(t);
+/* TIme Display */
+function date_time(id) {
+    date = new Date;
+    year = date.getFullYear();
+    month = date.getMonth();
+    months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
 
-    document.getElementById("latitude").appendChild(para);
+    d = date.getDate();
+    day = date.getDay();
+    days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+    h = date.getHours();
+
+    if (h < 10) {
+        h = "0" + h;
+    }
+
+    m = date.getMinutes();
+
+    if (m < 10) {
+        m = "0" + m;
+    }
+
+    s = date.getSeconds();
+
+    if (s < 10) {
+        s = "0" + s;
+    }
+
+    result = ' ' + days[day] + ' ' + months[month] + ' ' + d + ' ' + year + ' ' + h + ':' + m + ':' + s;
+    document.getElementById(id).innerHTML = result;
+    setTimeout('date_time("' + id + '");', '1000');
+
+    return true;
 }
+
 
 function eraseText(elementID) {
     'use strict';
