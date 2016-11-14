@@ -1,3 +1,5 @@
+var masterDivContents = "";
+
 window.onload = function () {
     'use strict';
     var datum_counter = -1; //initialize counter for the Datum Logs
@@ -24,23 +26,35 @@ window.onload = function () {
     document.getElementById("celestialViewFocus").onclick = function () {
         resestNavView();
         enlargeCelestialView();
+        
     };
 
     document.getElementById("allViewFocus").onclick = function () {
         resestNavView();
+        
     };
 
     document.getElementById("logButton").onclick = function () {
 
-        var inputstring;
-
         datum_counter = datum_counter + 1;
-        //datumHistory(datum_counter); //enter in log
-        logButtonPress(datum_counter)
-        
+        logButtonPress(datum_counter);
         
     };
+    
+    document.getElementById("saveDatumList").onclick = function () {
+        var filename, text;
+        //filename = "file:///C:/Users/Michael/Desktop/gpstemp/htmltext2.txt";
+        filename = "htmltext2.txt";
+        //text = text = document.getElementById("logDatumHistory").innerHTML;
+        
+        //innerHtmltoCssfile(filename, text);
+        //require("asdf", filename);
+        //fileSeverdemo(filename, text);
+        SaveContents();
+    };
 };
+
+/* display related */
 
 function enlargeLocationView() {
     'use strict';
@@ -191,7 +205,8 @@ function resestNavView() {
     //document.getElementById("waypoint_log").style.width = '';
 }
 
-/* text related functions */
+/* process text related functions */
+
 function logButtonPress(datum_counter) {
     'use strict';
     var lat, lon;
@@ -199,6 +214,8 @@ function logButtonPress(datum_counter) {
     lat = document.getElementById('latitudeDiv').innerText;
     lon = document.getElementById('longitudeDiv').innerText;
     datumHistory(lat, lon, datum_counter);
+    
+    masterDivContents += " " + document.getElementById("waypoint_log").innerHTML;
 }
 
 function datumHistory(latInput, lonInput, datum_counter) {
@@ -211,41 +228,64 @@ function datumHistory(latInput, lonInput, datum_counter) {
     */
 
     'use strict';
-    var mark, datumNo, lat, lon;
-
-    //name family
+    var mark, previusDatum, datumNo, datum_text, lat, lat_text, lon, lon_text, node, node_temp;
 
     mark = document.getElementById("logDatumHistory");
 
     datumNo = document.createElement("dl");
     datumNo.id = "datum" + datum_counter.toString();
+    datum_text= document.createTextNode("datum" + datum_counter.toString());
+    datumNo.appendChild(datum_text);
+    
 
-    lat = document.createElement("dd");
+    lat = document.createElement("li");
     lat.id = "lat" + datum_counter.toString();
+    lat_text = document.createTextNode(datum_counter.toString() + "lat: " + latInput);
+    lat.appendChild(lat_text);
 
-    lon = document.createElement("dd");
+    lon = document.createElement("li");
     lon.id = "lon" + datum_counter.toString();
-
-    //family values
-
-    mark.innerHTML = "Marker#:" + datum_counter.toString();
-    datumNo.innerHTML = datum_counter.toString() + ": datum";
-    lat.innerHTML = datum_counter.toString() + "lat: " + latInput;
-    lon.innerHTML = datum_counter.toString() + "lon: " + lonInput;
-
-    // inherit family
-
-    mark.parentNode.appendChild(datumNo); //inherit
-    datumNo.parentNode.appendChild(lat); //inherit
-    datumNo.parentNode.appendChild(lon); //inherit
-
-    //display family
-
-    datumNo.parentNode.insertBefore(datumNo, mark.nextSibling);
-    lon.parentNode.insertBefore(lon, datumNo.nextSibling);
-    lat.parentNode.insertBefore(lat, datumNo.nextSibling);
-
+    lon_text = document.createTextNode(datum_counter.toString() + "lon: " + lonInput);
+    lon.appendChild(lon_text);
+    
+    mark.appendChild(datumNo);
+    datumNo.appendChild(lon);
+    datumNo.appendChild(lat);
+    
+    //LILO
+    if (datum_counter > 0) {
+        node_temp = (datum_counter - 1).toString();
+        node_temp = "datum" + node_temp;
+        
+        previusDatum = document.getElementById(node_temp);
+        mark.parentNode.insertBefore(previusDatum, mark.nextSibling);
+    }
+    
 }
+
+/* savine to a file **********************/
+
+function SaveContents() {
+    'use strict';
+    
+    
+    if (document.execCommand) {
+        
+        var oWin = window.open("about:blank", "_blank");
+        //To add a new line, you need to use <br>
+        oWin.document.writeln(masterDivContents);
+        oWin.document.close();
+
+        //Need to specify the filename that we are going to set here
+        var success = oWin.document.execCommand('SaveAs', true, "output.txt")
+
+
+        oWin.close();
+        if (!success) {}
+    }
+}
+
+/*****************************************/
 
 function lat() {
     'use strict';
@@ -267,33 +307,42 @@ function eraseText(elementID) {
 
 function GEBCN(cn) {
     'use strict';
+    var classes, els, results, i, j, match;
     
-    if (document.getElementsByClassName) // Returns NodeList here
+    // Returns NodeList here
+    if (document.getElementsByClassName) {
         return document.getElementsByClassName(cn);
-
+    }
+    
     cn = cn.replace(/ *$/, '');
 
-    if (document.querySelectorAll) // Returns NodeList here
+    // Returns NodeList here
+    if (document.querySelectorAll) {
         return document.querySelectorAll((' ' + cn).replace(/ +/g, '.'));
-
+    }
+    
     cn = cn.replace(/^ */, '');
 
-    var classes = cn.split(/ +/), clength = classes.length;
-    var els = document.getElementsByTagName('*'), elength = els.length;
-    var results = [];
-    var i, j, match;
+    classes = cn.split(/ +/), clength = classes.length;
+    els = document.getElementsByTagName('*'), elength = els.length;
+    results = [];
 
     for (i = 0; i < elength; i++) {
         match = true;
-        for (j = clength; j--;)
-            if (!RegExp(' ' + classes[j] + ' ').test(' ' + els[i].className + ' '))
+        for (j = clength; j--;) {
+            if (!RegExp(' ' + classes[j] + ' ').test(' ' + els[i].className + ' ')) {
                 match = false;
-        if (match)
+            }
+        }
+        
+        if (match) {
             results.push(els[i]);
+        }
     }
 
     // Returns Array here
     return results;
+    
     /* 
     http://stackoverflow.com/questions/9568969/getelementsbyclassname-ie8-object-doesnt-support-this-property-or-method 
     this is because inferior versions of IE would not let me interface with HTML via JS and VisualStudio if this conversion of class/function isn't cosmetically put to correct for syntax
