@@ -23,3 +23,11 @@ This application is developed in VB/NET
 * View recent list of way-points reflecting where the end user last logged his/her present location
 * Save way-point in a time stamped text file
 * View a X-Y coordinate plane which shows a relative scale relationship to how far a person has moved from their start location
+
+## Celestial Navigation
+
+##### under construction !!!
+
+* HTML
+* JavaScript
+* VB.Net Serial Input and WebBrowser interface
