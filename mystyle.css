@@ -62,12 +62,23 @@ body {
 	text-align: left;
 	font-style: normal;
 }
-#latitudeDiv {}
-#longitudeDiv {}
+#latitudeDiv {
+    color: red;
+}
+#longitudeDiv {
+    color: red;
+}
 #angledirectionDIV {}
 #speedDiv {}
-#altitudeDiv {}
-#logDatumHistory {}
+#altitudeDiv{
+    color: darkblue;
+}
+#signalStrengthDiv {}
+#PDOPDiv {}
+#numberOfsatelitesDiv {}
+#logDatumHistory {
+    color: red;
+}
 
 /*-----------------------------------------------*/
 
