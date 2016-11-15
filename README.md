@@ -34,3 +34,4 @@ This application is developed in VB/NET
 * No ASP
 * No WPF
 * No PHP
+* No jQuery
