@@ -28,9 +28,9 @@ This application is developed in VB/NET
 
 ##### under construction !!!
 
-* HTML
-* JavaScript
-* VB.Net Serial Input and WebBrowser interface
+* Yes HTML
+* Yes JavaScript
+* Yes VB.Net Serial Input
 * No ASP
 * No WPF
 * No PHP
