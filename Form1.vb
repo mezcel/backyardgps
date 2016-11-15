@@ -4,8 +4,9 @@ Imports System.Windows.Forms.HtmlElement
 Imports System.Security.Permissions 'clear up any html/js/vb mixups
 Imports Microsoft.Win32 'used for registeryKey
 
+'''
 'Legacy from other similar app
-'open file dialog
+'''
 Imports System.IO
 Imports Microsoft.VisualBasic
 Imports System.Data
@@ -14,7 +15,7 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports System.IO.Ports
 
-'my custom serial classes
+'custom serial classes
 Imports CelestialHtmlWinForm.GPGGA_Class
 Imports CelestialHtmlWinForm.GPGSA_Class
 Imports CelestialHtmlWinForm.GPRMC_Class
