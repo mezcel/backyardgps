@@ -48,38 +48,13 @@ Public Class Form1
 
     End Sub
 
-    Private Sub fakeSerialInput()
-        Dim randomNumber1, randomNumber2 As Integer
-        Dim n As Integer
-        Dim html_element1, html_element2 As HtmlElement
-
-        n = 1234 'from 0 to n
-
-        html_element1 = Me.wbHtmlIndex.Document.GetElementById("latitudeDiv")
-        html_element2 = Me.wbHtmlIndex.Document.GetElementById("longitudeDiv")
-
-        randomNumber1 = CInt(Math.Ceiling(Rnd() * n)) + 1
-        randomNumber2 = CInt(Math.Ceiling(Rnd() * n)) + 1
-
-        html_element1.InnerText = "N/A"
-
-        randomNumber1 = CInt(Math.Ceiling(Rnd() * n)) + 1
-        randomNumber2 = CInt(Math.Ceiling(Rnd() * n)) + 1
-
-        html_element2.InnerText = randomNumber1.ToString + "." + randomNumber2.ToString
-    End Sub
-
-    Private Sub logInHtmlDisplay()
-
-    End Sub
-
     Private Sub btnSerialInputTest_Click(sender As Object, e As EventArgs) Handles btnSerialInputTest.Click
-        fakeSerialInput()
+        'this is used for testbench debugging
+        'i mix and match functions for testing here
     End Sub
 
     Private Sub wbHtmlIndex_Resize(sender As Object, e As EventArgs) Handles wbHtmlIndex.Resize
         lblWebContainer.Text = "Web Dimentions: " + wbHtmlIndex.Width.ToString + " x " + wbHtmlIndex.Height.ToString
-
 
     End Sub
 
