@@ -5,7 +5,7 @@ window.onload = function () {
     var datum_counter = -1; //initialize counter for the Datum Logs
 
     document.getElementById("locationViewFocus").onclick = function () {
-        //resestNavView();
+        resestNavView();
         enlargeLocationView();
 
         //eraseText('latitude'); //clear the text in the div
@@ -42,12 +42,19 @@ window.onload = function () {
     };
     
     document.getElementById("saveDatumList").onclick = function () {
+        var tableHtmlString, formatting_string;
+        
+        formatting_string = "<!-- to convert this list to a table ( Delete the <dl> tag and replace it with: <table> ) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements --> <style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
         
         masterDivContents = masterDivContents + "</DIV>";
-        masterDivContents = masterDivContents + " <!-- to convert this list to a table (Delete the <ul> tag and replace it with: <table>) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements -->";
+        //masterDivContents = masterDivContents + "<!-- to convert this list to a table ( Delete the <dl> tag and replace it with: <table> ) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements --> <style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
         
-        saveTextAsFile();
-        //SaveContents();
+        tableHtmlString = convertListToTable(masterDivContents, datum_counter); //convert from list html to table html
+        masterDivContents = tableHtmlString + formatting_string;
+        //saveTextAsFile(); //used for any browser
+        
+        
+        SaveContents(); //just for IE
     };
     
     date_time('date_time');
@@ -214,7 +221,9 @@ function logButtonPress(datum_counter) {
     lon = document.getElementById('longitudeDiv').innerText;
     datumHistory(lat, lon, datum_counter);
     
+    // masterDivContents += " " + document.getElementById("waypoint_log").innerHTML;
     masterDivContents = document.getElementById("waypoint_log").innerHTML;
+    
 }
 
 function datumHistory(latInput, lonInput, datum_counter) {
@@ -233,7 +242,7 @@ function datumHistory(latInput, lonInput, datum_counter) {
 
     datumNo = document.createElement("dl");
     datumNo.id = "datum" + datum_counter.toString();
-    datum_text= document.createTextNode("datum" + datum_counter.toString());
+    datum_text = document.createTextNode("datum" + datum_counter.toString());
     datumNo.appendChild(datum_text);
     
 
@@ -247,9 +256,11 @@ function datumHistory(latInput, lonInput, datum_counter) {
     lon_text = document.createTextNode(datum_counter.toString() + "lon: " + lonInput);
     lon.appendChild(lon_text);
     
+    
     mark.appendChild(datumNo);
     datumNo.appendChild(lon);
     datumNo.appendChild(lat);
+
     
     //LILO
     if (datum_counter > 0) {
@@ -263,27 +274,55 @@ function datumHistory(latInput, lonInput, datum_counter) {
 }
 
 /* savine to a file **********************/
+function convertListToTable(inputString, datum_counter) {
+    'use strict';
+    var i, cycleRepeat;
+    cycleRepeat = datum_counter * 2; //more or less, typicall 1 is not enough, this was overkill, but absolute
+    
+    inputString = inputString.replace(/<DIV/g, "<table");  
+    inputString = inputString.replace(/<\/DIV>/g,"</table>");
+
+    inputString = inputString.replace(/<DL/g, "<tr");  
+    inputString = inputString.replace(/<\/DL>/g,"</tr>"); 
+
+    inputString = inputString.replace(/<LI/g, "<td");  
+    inputString = inputString.replace(/<\/LI>/g,"</td>"); 
+
+    //http://stackoverflow.com/questions/20779071/how-to-find-and-replace-text-in-between-two-tags-in-html-or-xml-document-using-j
+    // do this a few time just to catch the few times something was missed
+    for (i = 0; i < cycleRepeat; i++) { 
+        inputString = inputString.replace(/<tr[\s\S]*?<td/, '<tr> <td'); // the 1st tr
+        inputString = inputString.replace(/<\/tr><tr[\s\S]*?<td/, '<tr> <td'); // the rest of the tr's
+        inputString = inputString.replace(/>\r\n[\s\S]*?<td/, '> <td'); // the exception tr
+        inputString = inputString.replace(/<\/tr><tr[\s\S]*?\r\n<td/, '<tr> <td'); // trs with line break
+        inputString = inputString.replace(/<\/table>\r\n<tr[\s\S]*?<td/, '\r\n<td'); // that first table end
+    }
+    
+    return inputString;
+}
 
 function SaveContents() {
     /* intended for IE8 */
     'use strict';
+    var oWin, success;
+    
     if (document.execCommand) {
         
-        var oWin = window.open("about:blank", "_blank");
+        oWin = window.open("about:blank", "_blank");
         //To add a new line, you need to use <br>
-        oWin.document.writeln(masterDivContents);
+        oWin.document.writeln(masterDivContents); //convert from list html to table html);
         oWin.document.close();
-
+        
         //Need to specify the filename that we are going to set here
-        var success = oWin.document.execCommand('SaveAs', true, "output.txt")
-
-
+        success = oWin.document.execCommand('SaveAs', true, "output.html")
+        
         oWin.close();
-        if (!success) {}
+        if (!success) { /* do nothing */}
     }
 }
 
 function saveTextAsFile() {
+    'use strict';
     /* https://jsfiddle.net/nekyouto/gokpfr00/ */
     var fileNameToSaveAs, downloadLink, textFileAsBlob, textToWrite;
     
@@ -334,7 +373,7 @@ function destroyClickedElement(event) {
 
 /* TIme Display */
 function date_time(id) {
-    date = new Date;
+    date = new Date();
     year = date.getFullYear();
     month = date.getMonth();
     months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
