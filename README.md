@@ -31,3 +31,6 @@ This application is developed in VB/NET
 * HTML
 * JavaScript
 * VB.Net Serial Input and WebBrowser interface
+* No ASP
+* No WPF
+* No PHP
