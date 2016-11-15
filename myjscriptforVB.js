@@ -1,13 +1,10 @@
-var masterDivContents = ""; //a variable containing div contents
-
+var masterDivContents = ""; //a variable containing all the div contents
 window.onload = function() {
 	'use strict';
 	var datum_counter = -1; //initialize counter for the Datum Logs
 	document.getElementById("locationViewFocus").onclick = function() {
 		resestNavView();
 		enlargeLocationView();
-		//eraseText('latitude'); //clear the text in the div
-		//lat();
 	};
 	document.getElementById("metaViewFocus").onclick = function() {
 		resestNavView();
@@ -32,7 +29,6 @@ window.onload = function() {
 		var tableHtmlString, formatting_string;
 		formatting_string = "<!-- to convert this list to a table ( Delete the <dl> tag and replace it with: <table> ) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements --> <style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
 		masterDivContents = masterDivContents + "</DIV>";
-		//masterDivContents = masterDivContents + "<!-- to convert this list to a table ( Delete the <dl> tag and replace it with: <table> ) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements --> <style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
 		tableHtmlString = convertListToTable(masterDivContents, datum_counter); //convert from list html to table html
 		masterDivContents = tableHtmlString + formatting_string;
 		//saveTextAsFile(); //used for any browser
@@ -168,6 +164,8 @@ function resestNavView() {
 	col3class[0].style.left = '71%';
 	//document.getElementById("waypoint_log").style.width = '';
 }
+
+function watchForLostSignal() {}
 /* process text related functions */
 function logButtonPress(datum_counter) {
 	'use strict';
@@ -295,6 +293,7 @@ function destroyClickedElement(event) {
 /*****************************************/
 /* TIme Display */
 function date_time(id) {
+	var lostsignalCheck;
 	date = new Date();
 	year = date.getFullYear();
 	month = date.getMonth();
@@ -313,6 +312,13 @@ function date_time(id) {
 	s = date.getSeconds();
 	if (s < 10) {
 		s = "0" + s;
+		// every 10 seconds, check if I still have a usable signal
+		lostsignalCheck = document.getElementById('latitudeDiv').innerText;
+		if (lostsignalCheck === "N/A") {
+			document.getElementsByTagName('body')[0].style.backgroundColor = "red";
+		} else {
+			document.getElementsByTagName('body')[0].style.backgroundColor = "green";
+		}
 	}
 	result = ' ' + days[day] + ' ' + months[month] + ' ' + d + ' ' + year + ' ' + h + ':' + m + ':' + s;
 	document.getElementById(id).innerHTML = result;
