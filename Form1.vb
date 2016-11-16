@@ -4,9 +4,8 @@ Imports System.Windows.Forms.HtmlElement
 Imports System.Security.Permissions 'clear up any html/js/vb mixups
 Imports Microsoft.Win32 'used for registeryKey
 
-'''
 'Legacy from other similar app
-'''
+'open file dialog
 Imports System.IO
 Imports Microsoft.VisualBasic
 Imports System.Data
@@ -15,7 +14,7 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports System.IO.Ports
 
-'custom serial classes
+'my custom serial classes
 Imports CelestialHtmlWinForm.GPGGA_Class
 Imports CelestialHtmlWinForm.GPGSA_Class
 Imports CelestialHtmlWinForm.GPRMC_Class
@@ -32,7 +31,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim urlstring As String
-        urlstring = "/index.html"
+        urlstring = "C:/Users/Michael/Documents/HTML Related/GPS_GUI/Simple_Version/index.html"
         wbHtmlIndex.Url = New Uri(urlstring)
 
         tmrBaud.Enabled = False
@@ -49,13 +48,38 @@ Public Class Form1
 
     End Sub
 
+    Private Sub fakeSerialInput()
+        Dim randomNumber1, randomNumber2 As Integer
+        Dim n As Integer
+        Dim html_element1, html_element2 As HtmlElement
+
+        n = 1234 'from 0 to n
+
+        html_element1 = Me.wbHtmlIndex.Document.GetElementById("latitudeDiv")
+        html_element2 = Me.wbHtmlIndex.Document.GetElementById("longitudeDiv")
+
+        randomNumber1 = CInt(Math.Ceiling(Rnd() * n)) + 1
+        randomNumber2 = CInt(Math.Ceiling(Rnd() * n)) + 1
+
+        html_element1.InnerText = "N/A"
+
+        randomNumber1 = CInt(Math.Ceiling(Rnd() * n)) + 1
+        randomNumber2 = CInt(Math.Ceiling(Rnd() * n)) + 1
+
+        html_element2.InnerText = randomNumber1.ToString + "." + randomNumber2.ToString
+    End Sub
+
+    Private Sub logInHtmlDisplay()
+
+    End Sub
+
     Private Sub btnSerialInputTest_Click(sender As Object, e As EventArgs) Handles btnSerialInputTest.Click
-        'this is used for testbench debugging
-        'i mix and match functions for testing here
+        fakeSerialInput()
     End Sub
 
     Private Sub wbHtmlIndex_Resize(sender As Object, e As EventArgs) Handles wbHtmlIndex.Resize
         lblWebContainer.Text = "Web Dimentions: " + wbHtmlIndex.Width.ToString + " x " + wbHtmlIndex.Height.ToString
+
 
     End Sub
 
@@ -72,24 +96,105 @@ Public Class Form1
     Private Sub writeGPGGAtoHTML(ByVal lat As String, ByVal lon As String, ByVal satQuantity As String, ByVal PDOP As String, ByVal altitude As String, ByVal fixstrength As String)
 
         'Dim html_latitude, html_longitude As HtmlElement
+        Try
+            Me.wbHtmlIndex.Document.GetElementById("latitude_GPGGA").InnerText = lat
+            Me.wbHtmlIndex.Document.GetElementById("longitude_GPGGA").InnerText = lon
+            Me.wbHtmlIndex.Document.GetElementById("numberOfsatelites_GPGGA").InnerText = satQuantity
+            Me.wbHtmlIndex.Document.GetElementById("PDOP_GPGGA").InnerText = PDOP
+            Me.wbHtmlIndex.Document.GetElementById("altitude_GPGGA").InnerText = altitude
+            Me.wbHtmlIndex.Document.GetElementById("signalStrength_GPGGA").InnerText = fixstrength
+        Catch ex As Exception
 
-        Me.wbHtmlIndex.Document.GetElementById("latitudeDiv").InnerText = lat
-        Me.wbHtmlIndex.Document.GetElementById("longitudeDiv").InnerText = lon
-        Me.wbHtmlIndex.Document.GetElementById("numberOfsatelitesDiv").InnerText = satQuantity
-        Me.wbHtmlIndex.Document.GetElementById("PDOPDiv").InnerText = PDOP
-        Me.wbHtmlIndex.Document.GetElementById("altitudeDiv").InnerText = altitude
-        Me.wbHtmlIndex.Document.GetElementById("signalStrengthDiv").InnerText = fixstrength
+        End Try
+        
 
     End Sub
+
+    Private Sub writeGPGSAtoHTML()
+
+        Try
+            Me.wbHtmlIndex.Document.GetElementById("PDOP_GPGSA").InnerText = GPGSA_Class.PDOP
+            Me.wbHtmlIndex.Document.GetElementById("HDOP_GPGSA").InnerText = GPGSA_Class.HDOP
+            Me.wbHtmlIndex.Document.GetElementById("VDOP_GPGSA").InnerText = GPGSA_Class.VDOP
+        Catch ex As Exception
+
+        End Try
+        
+
+    End Sub
+
+    Private Sub writeGPGSVtoHTML()
+        Try
+            Me.wbHtmlIndex.Document.GetElementById("noOfMsgs_GPGSV").InnerText = GPGSV_Class.NoOfMsgs
+            Me.wbHtmlIndex.Document.GetElementById("msgNo_GPGSV").InnerText = GPGSV_Class.msgNo
+            Me.wbHtmlIndex.Document.GetElementById("totalNoOfSV_GPGSV").InnerText = GPGSV_Class.totalNoOfSV
+
+            Me.wbHtmlIndex.Document.GetElementById("svPRNno1_GPGSV").InnerText = GPGSV_Class.svPRNno(0)
+            Me.wbHtmlIndex.Document.GetElementById("elevation1_GPGSV").InnerText = GPGSV_Class.Elevation(0)
+            Me.wbHtmlIndex.Document.GetElementById("azimuth1_GPGSV").InnerText = GPGSV_Class.Azimuth(0)
+            Me.wbHtmlIndex.Document.GetElementById("SNR1_GPGSV").InnerText = GPGSV_Class.SNR(0)
+
+            Me.wbHtmlIndex.Document.GetElementById("svPRNno2_GPGSV").InnerText = GPGSV_Class.svPRNno(1)
+            Me.wbHtmlIndex.Document.GetElementById("elevation2_GPGSV").InnerText = GPGSV_Class.Elevation(1)
+            Me.wbHtmlIndex.Document.GetElementById("azimuth2_GPGSV").InnerText = GPGSV_Class.Azimuth(1)
+            Me.wbHtmlIndex.Document.GetElementById("SNR2_GPGSV").InnerText = GPGSV_Class.SNR(1)
+
+            Me.wbHtmlIndex.Document.GetElementById("svPRNno3_GPGSV").InnerText = GPGSV_Class.svPRNno(2)
+            Me.wbHtmlIndex.Document.GetElementById("elevation3_GPGSV").InnerText = GPGSV_Class.Elevation(2)
+            Me.wbHtmlIndex.Document.GetElementById("azimuth3_GPGSV").InnerText = GPGSV_Class.Azimuth(2)
+            Me.wbHtmlIndex.Document.GetElementById("SNR3_GPGSV").InnerText = GPGSV_Class.SNR(2)
+
+            Me.wbHtmlIndex.Document.GetElementById("svPRNno4_GPGSV").InnerText = GPGSV_Class.svPRNno(3)
+            Me.wbHtmlIndex.Document.GetElementById("elevation4_GPGSV").InnerText = GPGSV_Class.Elevation(3)
+            Me.wbHtmlIndex.Document.GetElementById("azimuth4_GPGSV").InnerText = GPGSV_Class.Azimuth(3)
+            Me.wbHtmlIndex.Document.GetElementById("SNR4_GPGSV").InnerText = GPGSV_Class.SNR(3)
+        Catch ex As Exception
+
+        End Try
+        
+
+    End Sub
+
+    Private Sub writeGPRMCtoHTML()
+
+        Try
+            Me.wbHtmlIndex.Document.GetElementById("utctime_GPRMC").InnerText = GPRMC_Class.UTCTime
+            Me.wbHtmlIndex.Document.GetElementById("latitude_GPRMC").InnerText = GPRMC_Class.LATITUDE
+            Me.wbHtmlIndex.Document.GetElementById("nsindicator_GPRMC").InnerText = GPRMC_Class.NSindicator
+            Me.wbHtmlIndex.Document.GetElementById("longitude_GPRMC").InnerText = GPRMC_Class.LONGITUDE
+            Me.wbHtmlIndex.Document.GetElementById("ewindicator_GPRMC").InnerText = GPRMC_Class.EWindicator
+            Me.wbHtmlIndex.Document.GetElementById("sog_GPRMC").InnerText = GPRMC_Class.SOG
+            Me.wbHtmlIndex.Document.GetElementById("utcdate_GPRMC").InnerText = GPRMC_Class.UTCDATE
+        Catch ex As Exception
+
+        End Try
+        
+
+    End Sub
+
 
     ''' 
     ''' Interface with Serial Classes
     ''' 
     Private Sub readGPGSA(ByVal lineArr As Array)
+
         BU353_GPGSA.globalBU353ClassVar(lineArr)
+
+        writeGPGSAtoHTML()
+
     End Sub
 
     Private Sub readGPRMC(ByVal lineArr As Array)
+
+        Try
+            BU353_GPRMC.globalBU353ClassVar(lineArr)
+
+            writeGPRMCtoHTML()
+        Catch ex As Exception
+
+        End Try
+        
+
     End Sub
 
     Private Sub readGPGGA(ByVal lineArr As Array)
@@ -111,11 +216,11 @@ Public Class Form1
         EW = GPGGA_Class.eastwestEWString
         Longitude = GPGGA_Class.lonPosition.ToString
 
-        AntennaTime = GPGGA_Class.utcTime.ToString
-        AntennaFix = GPGGA_Class.qualityIndicator.ToString
-        SateliteNo = GPGGA_Class.sateliteNumber.ToString
-        Dilution = GPGGA_Class.horizontalDilutionPrecision.ToString
-        Altitude = GPGGA_Class.altitudeSeaLevel.ToString
+        AntennaTime = GPGGA_Class.utcTime
+        AntennaFix = GPGGA_Class.qualityIndicator
+        SateliteNo = GPGGA_Class.sateliteNumber
+        Dilution = GPGGA_Class.horizontalDilutionPrecision
+        Altitude = GPGGA_Class.altitudeSeaLevel
 
         Select Case AntennaFix
             Case 0
@@ -131,7 +236,16 @@ Public Class Form1
     End Sub
 
     Private Sub readGPGSV(ByVal lineArr As Array)
-        BU353_GPGSV.globalBU353ClassVar(lineArr)
+
+        Try
+            BU353_GPGSV.globalBU353ClassVar(lineArr)
+
+            writeGPGSVtoHTML()
+        Catch ex As Exception
+
+        End Try
+        
+
     End Sub
 
     Sub GetSerialPortNames()
@@ -150,9 +264,9 @@ Public Class Form1
             For Each sp As String In My.Computer.Ports.SerialPortNames
                 ' realistically there will be only 1 COM name, but if there are more, then at least they are all archived 
                 portNameString = sp
-
             Next
 
+            'name the serial port class object whatever is necessarry based on that the coputer calles its usb COM port
             spBU353.PortName = portNameString
 
             If (spBU353.IsOpen = False) Then
