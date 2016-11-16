@@ -1,185 +1,231 @@
 @charset "UTF-8";
 
 /*---------------*/
-
-
 /* div id blocks */
-
-
 /*---------------*/
 
 html {
-	background: white;
+    background: white;
 }
+
 body {
-	background: white;
-	font-style: normal;
-	padding: 5px;
-	min-width: 320px;
-	/* the smallest in refference to iPhone3*/
-	max-width: 1080px;
-	margin: 0 auto;
-	background-color: red;
-	/* this color indicates if the app is running */
-	/* green=running, red=stopped*/
+    background: white;
+    font-style: normal;
+    padding: 5px;
+    min-width: 320px; /* the smallest in refference to iPhone3*/
+    max-width: 1080px;
+    margin:0 auto;
+    background-color: red; /* this color indicates if the app is running */ /* green=running, red=stopped*/
 }
 #topmostBanner {
-	border: 2px solid black;
-	text-align: center;
-	padding: .5em;
+    border: 2px solid black;
+    text-align: center;
+    padding: .5em;
 }
+
 #information_container {
-	padding: 2px;
-	border: 3px solid black;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	border: none;
-	align-items: center;
+    padding: 2px;
+    border: 3px solid black;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    border: none;
+    align-items: center;
 }
+
 #serial_info_main {
-	background-color: lightgray;
-	position: relative;
-	height: 100%;
-	margin-bottom: 2px;
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
 }
+
 #serial_info_meta {
-	background-color: lightgray;
-	position: relative;
-	height: 100%;
-	margin-bottom: 2px;
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
 }
+
 #waypoint_log {
-	background-color: lightgray;
-	position: relative;
-	height: 100%;
-	margin-bottom: 2px;
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
 }
+
 #celestial_navigation_region {
-	background-color: lightgray;
-	width: 98%;
-	padding: 2px;
-	text-align: left;
-	font-style: normal;
+    background-color: lightgray;
+    width: 98%;
+    padding: 2px;
+    text-align: left;
+    font-style: normal;
 }
-#latitudeDiv {
-    color: red;
-}
-#longitudeDiv {
-    color: red;
-}
-#angledirectionDIV {}
-#speedDiv {}
-#altitudeDiv{
-    color: darkblue;
-}
-#signalStrengthDiv {}
-#PDOPDiv {}
-#numberOfsatelitesDiv {}
-#logDatumHistory {
-    color: red;
-}
+
+
+/* GPGGA */
+
+#latitude_GPGGA { color: red; }
+#longitude_GPGGA { color: red; }
+#altitude_GPGGA{ color: red; }
+#signalStrength_GPGGA {color: red;}
+#PDOP_GPGGA {color: red;}
+#numberOfsatelites_GPGGA {color: red;}
+
+/* GPGSA */
+
+#PDOP_GPGSA{color: brown;}
+#HDOP_GPGSA{color: brown;}
+#VDOP_GPGSA{color: brown;}
+
+/* GPGSV */
+#noOfMsgs_GPGSV{}
+#msgNo_GPGSV{}
+#totalNoOfSV_GPGSV{}
+
+#svPRNno1_GPGSV{}
+#elevation1_GPGSV{}
+#azimuth1_GPGSV{}
+#SNR1_GPGSV{}
+
+#svPRNno2_GPGSV{}
+#elevation2_GPGSV{}
+#azimuth2_GPGSV{}
+#SNR2_GPGSV{}
+
+#svPRNno3_GPGSV{}
+#elevation3_GPGSV{}
+#azimuth3_GPGSV{}
+#SNR3_GPGSV{}
+
+#svPRNno4_GPGSV{}
+#elevation4_GPGSV{}
+#azimuth4_GPGSV{}
+#SNR4_GPGSV{}
+
+/* GPRMC */
+#utctime_GPRMC{}
+#latitude_GPRMC{}
+#nsindicator_GPRMC{}
+#longitude_GPRMC{}
+#ewindicator_GPRMC{}
+#sog_GPRMC{}
+#utcdate_GPRMC{}
+#mode_GPRMC{}
+
+#logDatumHistory { color: red; }
 
 /*-----------------------------------------------*/
-
-
 /* Auto generated class code credits: -----------*/
-
-
 /* http://www.pagecolumn.com/3_col_generator.htm */
-
-
 /*-----------------------------------------------*/
 
-.colmask {
-	position: relative;
-	overflow: hidden;
-	margin: 0px auto;
-	min-width: 320px;
-	background-color: silver;
+.colmask{
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+    min-width: 320px;
+    background-color: silver;
 }
-.header {
-	float: left;
-	width: 100%;
+
+.header{
+   float: left;
+   width: 100%;
 }
-.colmid {
-	position: relative;
-	width: 100%;
-	right: 33%;
+
+.colmid{
+   position: relative;
+   width: 100%;
+   right: 33%;
 }
-.colleft {
-	position: relative;
-	width: 100%;
-	right: 33%;
+
+.colleft{
+   position: relative;
+   width: 100%;
+   right: 33%;
 }
-.col1 {
-	position: relative;
-	overflow: hidden;
-	float: left;
-	width: 31%;
-	left: 101%;
-	background-color: silver;
-	padding-top: .5em;
+
+.col1{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 101%;
+    background-color: silver;
+    padding-top: .5em;
 }
-.col2 {
-	position: relative;
-	overflow: hidden;
-	float: left;
-	width: 32%;
-	left: 36%;
-	background-color: silver;
-	padding-top: .5em;
+
+.col2{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 32%;
+   left: 36%;
+    background-color: silver;
+    padding-top: .5em;
 }
-.col3 {
-	position: relative;
-	overflow: hidden;
-	float: left;
-	width: 31%;
-	left: 71%;
-	background-color: silver;
-	padding-top: .5em;
+
+.col3{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 71%;
+    background-color: silver;
+    padding-top: .5em;
 }
-.footer {
-	float: left;
-	width: 100%;
-	text-align: center;
+
+.footer{
+    float: left;
+    width: 100%;
+    text-align: center;
 }
 
 /*----------------------*/
-
-
 /* button look and feel */
-
-
 /*----------------------*/
 
-input[type="submit"], input[type="reset"], input[type="button"], button, .button {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-	-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-	background-color: #5a5a5a;
-	border-radius: 0;
-	border: 0;
-	color: white !important;
-	cursor: pointer;
-	display: inline-block;
-	font-weight: 600;
-	height: 2.85em;
-	line-height: 2.95em;
-	text-align: center;
-	text-decoration: none;
-	white-space: nowrap;
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #5a5a5a;
+    border-radius: 0;
+    border: 0;
+    color: white !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 2.85em;
+    line-height: 2.95em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
 }
-input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, button:hover, .button:hover {
-	background-color: silver;
-	color: red;
-}
-input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, button:active, .button:active {
-	background-color: black;
-	color: purple;
-}
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover,
+    button:hover,
+    .button:hover {
+        background-color: silver;
+        color: red;
+    }
+
+    input[type="submit"]:active,
+    input[type="reset"]:active,
+    input[type="button"]:active,
+    button:active,
+    .button:active {
+        background-color: black;
+        color: purple;
+    }
