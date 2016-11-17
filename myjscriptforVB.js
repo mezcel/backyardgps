@@ -45,7 +45,7 @@ window.onload = function () {
         masterDivContents = masterDivContents + "</DIV>";        
         tableHtmlString = convertListToTable(masterDivContents, datum_counter); //convert from list html to table html        
         
-        outputfile_button = "<button id='exportAsCSVbutton'>Export From Table HTMLTo Text CSV File</button>";
+        outputfile_button = "<button id='exportAsCSVbutton'>Export From HTML Table To Text Comma Separated Text File</button>";
         
         outputfile_style = "<style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
         
