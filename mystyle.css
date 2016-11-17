@@ -74,46 +74,48 @@ body {
 
 /* GPGSA */
 
-#PDOP_GPGSA{color: brown;}
-#HDOP_GPGSA{color: brown;}
-#VDOP_GPGSA{color: brown;}
+#PDOP_GPGSA{text-align: right;}
+#HDOP_GPGSA{text-align: right;}
+#VDOP_GPGSA{text-align: right;}
 
 /* GPGSV */
-#noOfMsgs_GPGSV{}
-#msgNo_GPGSV{}
-#totalNoOfSV_GPGSV{}
+#noOfMsgs_GPGSV{text-align: right;}
+#msgNo_GPGSV{text-align: right;}
+#totalNoOfSV_GPGSV{text-align: right;}
 
-#svPRNno1_GPGSV{}
-#elevation1_GPGSV{}
-#azimuth1_GPGSV{}
-#SNR1_GPGSV{}
+#svPRNno1_GPGSV{background-color: palevioletred; color: black;text-align: right;}
+#elevation1_GPGSV{background-color: lightpink; color: black;text-align: right;}
+#azimuth1_GPGSV{background-color: lightpink; color: black;text-align: right;}
+#SNR1_GPGSV{background-color: lightpink; color: black;text-align: right;}
 
-#svPRNno2_GPGSV{}
-#elevation2_GPGSV{}
-#azimuth2_GPGSV{}
-#SNR2_GPGSV{}
+#svPRNno2_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation2_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth2_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR2_GPGSV{background-color: lightpink;color: black;text-align: right;}
 
-#svPRNno3_GPGSV{}
-#elevation3_GPGSV{}
-#azimuth3_GPGSV{}
-#SNR3_GPGSV{}
+#svPRNno3_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation3_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth3_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR3_GPGSV{background-color: lightpink;color: black;text-align: right;}
 
-#svPRNno4_GPGSV{}
-#elevation4_GPGSV{}
-#azimuth4_GPGSV{}
-#SNR4_GPGSV{}
+#svPRNno4_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation4_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth4_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR4_GPGSV{background-color: lightpink;color: black;text-align: right;}
 
 /* GPRMC */
-#utctime_GPRMC{}
-#latitude_GPRMC{}
-#nsindicator_GPRMC{}
-#longitude_GPRMC{}
-#ewindicator_GPRMC{}
-#sog_GPRMC{}
-#utcdate_GPRMC{}
-#mode_GPRMC{}
 
-#logDatumHistory { color: red; }
+#utctime_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#latitude_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#nsindicator_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#longitude_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#ewindicator_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#sog_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#utcdate_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#mode_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+
+/* Log */
+#logDatumHistory { background-color: white; color: darkslategrey; border: solid; border-width: 2px;}
 
 /*-----------------------------------------------*/
 /* Auto generated class code credits: -----------*/
