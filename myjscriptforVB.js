@@ -39,17 +39,21 @@ window.onload = function () {
     };
     
     document.getElementById("saveDatumList").onclick = function () {
-        var tableHtmlString, formatting_string;
         
-        formatting_string = "<!-- to convert this list to a table ( Delete the <dl> tag and replace it with: <table> ) and (Replace each <li> tag with table row and table data tags: <tr><td> ) and close each of the elements --> <style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
+        var tableHtmlString, outputfile_style, outputfile_script, outputfile_button;
         
-        masterDivContents = masterDivContents + "</DIV>";
+        masterDivContents = masterDivContents + "</DIV>";        
+        tableHtmlString = convertListToTable(masterDivContents, datum_counter); //convert from list html to table html        
         
-        tableHtmlString = convertListToTable(masterDivContents, datum_counter); //convert from list html to table html
-        masterDivContents = tableHtmlString + formatting_string;
+        outputfile_button = "<button id='exportAsCSVbutton'>Export From Table HTMLTo Text CSV File</button>";
+        
+        outputfile_style = "<style>/* Table Printout Format */table {font-family: arial, sans-serif; border-collapse: collapse; width: 100%; } td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; } tr:nth-child(even) { background-color: #dddddd; }</style>";
+        
+        outputfile_script = "<script> window.onload = function () { document.getElementById('exportAsCSVbutton').onclick = function () { SaveContents(); }; }; function SaveContents() { 'use strict'; var oWin, success, utfIn, utfOut; utfIn = document.getElementById('logDatumHistory').innerHTML; utfOut = parseFormat(utfIn); if (document.execCommand) { oWin = window.open('about:blank', '_blank'); oWin.document.writeln(utfOut); oWin.document.close(); success = oWin.document.execCommand('SaveAs', true, 'output.txt'); oWin.close(); if (!success) { /* do nothing */} } } function parseFormat(htmlString) { htmlString = htmlString.replace(/<\\\/th><\\\/tr>[\\s\\S]*?>/g,'<br>'); htmlString = htmlString.replace(/<\\\/td><\\\/tr>[\\s\\S]*?>/g,'<br>'); htmlString = htmlString.replace(/<\\\/td>[\\s\\S]*?>/g, ', '); htmlString = htmlString.replace(/<\\\/th><th>/g, ', '); return htmlString; } </script>";
+        
+        masterDivContents = outputfile_button + tableHtmlString + "</table>" + outputfile_style + outputfile_script;
+        
         saveHtmlAsFile(); //used for any browser
-        
-        
         //SaveContents(); //just for IE
     };
     
@@ -235,39 +239,42 @@ function datumHistory(latInput, lonInput, datum_counter) {
     */
 
     'use strict';
-    var mark, previusDatum, datumNo, datum_text, lat, lat_text, lon, lon_text, node, node_temp;
+    var mark, previusDatumList, datumList, datumList_text, datumCount, datatumCount_text, lat, lat_text, lon, lon_text, node, node_temp;
 
     mark = document.getElementById("logDatumHistory");
 
-    datumNo = document.createElement("dl");
-    datumNo.id = "Datum" + datum_counter.toString();
-    datum_text = document.createTextNode("Datum: " + datum_counter.toString());
-    datumNo.appendChild(datum_text);
+    datumList = document.createElement("dl");
+    datumList.id = "datum_" + datum_counter.toString();
+    datumList_text = document.createTextNode("Datum: " + datum_counter.toString());
+    datumList.appendChild(datumList_text);
     
+	datumCount = document.createElement("li");
+	datumCount.id = "wptID_" + datum_counter.toString();
+    datatumCount_text = document.createTextNode(datum_counter);
+    datumCount.appendChild(datatumCount_text);
 
     lat = document.createElement("li");
-    lat.id = "lat" + datum_counter.toString();
+    lat.id = "lat_" + datum_counter.toString();
     lat_text = document.createTextNode(latInput);
     lat.appendChild(lat_text);
 
     lon = document.createElement("li");
-    lon.id = "lon" + datum_counter.toString();
+    lon.id = "lon_" + datum_counter.toString();
     lon_text = document.createTextNode(lonInput);
-    lon.appendChild(lon_text);
+    lon.appendChild(lon_text);    
     
-    
-    mark.appendChild(datumNo);
-    datumNo.appendChild(lat);
-    datumNo.appendChild(lon);
-
+    mark.appendChild(datumList);
+	datumList.appendChild(datumCount);
+    datumList.appendChild(lat);
+    datumList.appendChild(lon);
     
     //LILO
     if (datum_counter > 0) {
         node_temp = (datum_counter - 1).toString();
-        node_temp = "datum" + node_temp;
+        node_temp = "datum_" + node_temp;
         
-        previusDatum = document.getElementById(node_temp);
-        mark.parentNode.insertBefore(previusDatum, mark.nextSibling);
+        previusDatumList = document.getElementById(node_temp);
+        mark.parentNode.insertBefore(previusDatumList, mark.nextSibling);
     }
     
 }
@@ -276,13 +283,14 @@ function datumHistory(latInput, lonInput, datum_counter) {
 
 function convertListToTable(inputString, datum_counter) {
     'use strict';
-    var i, cycleRepeat, headerString;
+    var i, headerString;
 	
-	headerString = "id=logDatumHistory><tr><th>Latitude</th><th>Longitude</th></tr>";
-    cycleRepeat = datum_counter * 2; //more or less, typicall 1 is not enough, this was overkill, but absolute
+	headerString = "id=logDatumHistory><tr><th>DatumID</th><th>Latitude</th><th>Longitude</th></tr>";
+    cycleRepeat = 1; //datum_counter * 1; //more or less, typicall 1 is not enough, this was overkill, but absolute
     
     inputString = inputString.replace(/<DIV/g, "<table");  
-    inputString = inputString.replace(/<\/DIV>/g,"</table>");
+    //inputString = inputString.replace(/<\/DIV>/g,"</table>");
+    inputString = inputString.replace(/<\/DIV>/g,"");
 
     inputString = inputString.replace(/<DL/g, "<tr");  
     inputString = inputString.replace(/<\/DL>/g,"</tr>"); 
@@ -291,14 +299,8 @@ function convertListToTable(inputString, datum_counter) {
     inputString = inputString.replace(/<\/LI>/g,"</td>"); 
 
     //http://stackoverflow.com/questions/20779071/how-to-find-and-replace-text-in-between-two-tags-in-html-or-xml-document-using-j
-    // do this a few time just to catch the few times something was missed
-    for (i = 0; i < cycleRepeat; i++) { 
-        inputString = inputString.replace(/<tr[\s\S]*?<td/, '<tr> <td'); // the 1st tr
-        inputString = inputString.replace(/<\/tr><tr[\s\S]*?<td/, '<tr> <td'); // the rest of the tr's
-        inputString = inputString.replace(/>\r\n[\s\S]*?<td/, '> <td'); // the exception tr
-        inputString = inputString.replace(/<\/tr><tr[\s\S]*?\r\n<td/, '<tr> <td'); // trs with line break
-        inputString = inputString.replace(/<\/table>\r\n<tr[\s\S]*?<td/, '\r\n<td'); // that first table end
-    }
+     
+    inputString = inputString.replace(/<tr[\s\S]*?<td/g, "<tr><td"); //remove tr ids from view
     
 	inputString = inputString.replace(/id=logDatumHistory>/g, headerString);
 	
