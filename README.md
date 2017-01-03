@@ -1,6 +1,6 @@
-# SVG Map
+# SVG Map (WIP)
 
-## This was a work in prgress brainstorm design (WIP)
+## This element was a work in prgress brainstorm design (WIP)
 
 ### an image which is a coordinate map
 
