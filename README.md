@@ -28,10 +28,8 @@ This application is developed in VB/NET
 
 ##### under construction !!!
 
-* Yes HTML
-* Yes JavaScript
-* Yes VB.Net Serial Input
-* No ASP
-* No WPF
-* No PHP
-* No jQuery
+* Web Browser Interface: IE, Chrome, FireFox
+* HTML5 Touch Screen
+* JavaScript
+* CSS
+* VB.Net Serial Input
