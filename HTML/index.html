@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <title>Page Title</title>
+	  <link rel="stylesheet" href="mystyle.css">
+	</head>
+
+	<body>
+        <!-- serial gps -->
+        <div class="colmask">
+            
+            <div class="header">
+                <div id="topmostBanner">
+                    <b>Celestial Navigation / GPS Viewer GUI</b><hr>
+                    
+                    <button id="locationViewFocus">Location</button>
+                    <button id="metaViewFocus">Signal</button>
+                    <button id="logViewFocus">Log</button>
+                    <button id="celestialViewFocus">Celestial</button>
+                    <button id="allViewFocus">ALL</button>
+                </div>
+            </div>
+            
+            <div class="colmid">
+                <div class="colleft">
+                    
+                    <div class="col1">
+                        <b>Signal Meta:</b><hr>
+                        <div id= "serial_info_meta">
+						
+						<!-- GPGSA -->
+                        <b><u>GPGSA:</u></b><br>
+						PDOP:<div id="PDOP_GPGSA"></div>
+						HDOP:<div id="HDOP_GPGSA"></div>
+						VDOP:<div id="VDOP_GPGSA"></div>
+						<hr>
+                        <!-- GPRMC -->
+                        <b><u>GPRMC:</u></b><br>
+						UTC Time:<div id="utctime_GPRMC"></div>
+						Latititude:<div id="latitude_GPRMC"></div>
+						<div id="nsindicator_GPRMC"></div>
+						Longitude:<div id="longitude_GPRMC"></div>
+						<div id="ewindicator_GPRMC"></div>
+						SOG:<div id="sog_GPRMC"></div>
+						UTC Date:<div id="utcdate_GPRMC"></div>
+                        <hr> 
+						<!-- GPGSV -->
+                        <b><u>GPGSV:</u></b><br>
+						SV Msgs:<div id="noOfMsgs_GPGSV"></div>
+						Msg No:<div id="msgNo_GPGSV"></div>
+						SV's in view<div id="totalNoOfSV_GPGSV"></div>
+						
+						SV1:<div id="svPRNno1_GPGSV"></div>
+						<div id="elevation1_GPGSV"></div>
+						<div id="azimuth1_GPGSV"></div>
+						<div id="SNR1_GPGSV"></div>
+						
+						SV2:<div id="svPRNno2_GPGSV"></div>
+						<div id="elevation2_GPGSV"></div>
+						<div id="azimuth2_GPGSV"></div>
+						<div id="SNR2_GPGSV"></div>
+						
+						SV3:<div id="svPRNno3_GPGSV"></div>
+						<div id="elevation3_GPGSV"></div>
+						<div id="azimuth3_GPGSV"></div>
+						<div id="SNR3_GPGSV"></div>
+						
+						SV4:<div id="svPRNno4_GPGSV"></div>
+						<div id="elevation4_GPGSV"></div>
+						<div id="azimuth4_GPGSV"></div>
+						<div id="SNR4_GPGSV"></div>
+						
+						
+						
+						
+                        </div>
+                    </div>
+                    
+                    <div class="col2">
+                        <b>Location:</b><hr>
+                        <div id= "serial_info_main">
+						<!-- GPGGA -->
+                            <b><u>GPGGA:</u></b><br>
+                            Lat:<div id="latitude_GPGGA">N/A</div>
+							Lon:<div id="longitude_GPGGA">N/A</div>
+							Altitude:<div id="altitude_GPGGA">N/A</div>
+							Signal Strength:<div id="signalStrength_GPGGA">N/A</div>
+							PDOP:<div id="PDOP_GPGGA">N/A</div>
+							Num. of Satelites:<div id="numberOfsatelites_GPGGA">N/A</div>
+                        </div>
+                    </div> 
+                    
+                    <div class="col3">
+                        <b>Datum Log:</b><hr>
+                        <button id="logButton">Enter Datum</button><hr>
+                        <button id="saveDatumList">Save List</button>
+                        <br> Datum List:
+                        <div id= "waypoint_log">
+                            <div id="logDatumHistory"></div>
+                        </div>
+                    </div> 
+                    
+                </div> 
+                
+            </div>
+            <hr>
+            <div class="footer">
+                <hr><b>Celestial Navigation Information:</b><br>
+                <span id="date_time"></span>
+                <hr>
+                <div id="celestial_navigation_region">
+                    <!-- I am going to use the brightest: https://en.wikipedia.org/wiki/List_of_selected_stars_for_navigation -->
+                    <b>Primary Heavenly Bodies:</b> <br>
+                    Azmuth: Sun () <br>
+                    Azmuth: Moon () <br>
+                    Azmuth: Polaris () <br>
+                    <hr>
+                    <b>Northern Stars:</b><br><!-- https://en.wikipedia.org/wiki/File:Navigational-stars-above-30-degrees-north.svg -->
+                    Azmuth: Vega () <br>
+                    Azmuth: Capella () <br>
+                    <hr>
+                    <b>Equatorial Stars:</b><br>
+                    Azmuth: Arcturus () <br>
+                    <hr>
+                    <b>Southern Stars:</b><br>
+                    Azmuth: Acrux () <br>
+                </div>
+                <hr>
+            </div>
+            
+        </div>
+    </body>
+	<script type="text/javascript" src="myjscriptforVB.js" ></script>
+</html>

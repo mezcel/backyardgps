@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+/*---------------*/
+/* div id blocks */
+/*---------------*/
+
+html {
+    background: white;
+}
+
+body {
+    background: white;
+    font-style: normal;
+    padding: 5px;
+    min-width: 320px; /* the smallest in refference to iPhone3*/
+    max-width: 1080px;
+    margin:0 auto;
+    background-color: red; /* this color indicates if the app is running */ /* green=running, red=stopped*/
+}
+#topmostBanner {
+    border: 2px solid black;
+    text-align: center;
+    padding: .5em;
+}
+
+#information_container {
+    padding: 2px;
+    border: 3px solid black;
+    width:100%;
+    height:100%;
+    overflow:auto;
+    border: none;
+    align-items: center;
+}
+
+#serial_info_main {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
+}
+
+#serial_info_meta {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
+}
+
+#waypoint_log {
+    background-color: lightgray;
+    position: relative;
+    height: 100%;
+    margin-bottom: 2px;
+}
+
+#celestial_navigation_region {
+    background-color: lightgray;
+    width: 98%;
+    padding: 2px;
+    text-align: left;
+    font-style: normal;
+}
+
+
+/* GPGGA */
+
+#latitude_GPGGA { color: red; }
+#longitude_GPGGA { color: red; }
+#altitude_GPGGA{ color: red; }
+#signalStrength_GPGGA {color: red;}
+#PDOP_GPGGA {color: red;}
+#numberOfsatelites_GPGGA {color: red;}
+
+/* GPGSA */
+
+#PDOP_GPGSA{text-align: right;}
+#HDOP_GPGSA{text-align: right;}
+#VDOP_GPGSA{text-align: right;}
+
+/* GPGSV */
+#noOfMsgs_GPGSV{text-align: right;}
+#msgNo_GPGSV{text-align: right;}
+#totalNoOfSV_GPGSV{text-align: right;}
+
+#svPRNno1_GPGSV{background-color: palevioletred; color: black;text-align: right;}
+#elevation1_GPGSV{background-color: lightpink; color: black;text-align: right;}
+#azimuth1_GPGSV{background-color: lightpink; color: black;text-align: right;}
+#SNR1_GPGSV{background-color: lightpink; color: black;text-align: right;}
+
+#svPRNno2_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation2_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth2_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR2_GPGSV{background-color: lightpink;color: black;text-align: right;}
+
+#svPRNno3_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation3_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth3_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR3_GPGSV{background-color: lightpink;color: black;text-align: right;}
+
+#svPRNno4_GPGSV{background-color: palevioletred;color: black;text-align: right;}
+#elevation4_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#azimuth4_GPGSV{background-color: lightpink;color: black;text-align: right;}
+#SNR4_GPGSV{background-color: lightpink;color: black;text-align: right;}
+
+/* GPRMC */
+
+#utctime_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#latitude_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#nsindicator_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#longitude_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#ewindicator_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#sog_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#utcdate_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+#mode_GPRMC{background-color: lightsteelblue;color: black;text-align: right;}
+
+/* Log */
+#logDatumHistory { background-color: white; color: darkslategrey; border: solid; border-width: 2px;}
+
+/*-----------------------------------------------*/
+/* Auto generated class code credits: -----------*/
+/* http://www.pagecolumn.com/3_col_generator.htm */
+/*-----------------------------------------------*/
+
+.colmask{
+    position: relative;
+    overflow: hidden;
+    margin: 0px auto;
+    min-width: 320px;
+    background-color: silver;
+}
+
+.header{
+   float: left;
+   width: 100%;
+}
+
+.colmid{
+   position: relative;
+   width: 100%;
+   right: 33%;
+}
+
+.colleft{
+   position: relative;
+   width: 100%;
+   right: 33%;
+}
+
+.col1{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 101%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.col2{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 32%;
+   left: 36%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.col3{
+   position: relative;
+   overflow: hidden;
+   float: left;
+   width: 31%;
+   left: 71%;
+    background-color: silver;
+    padding-top: .5em;
+}
+
+.footer{
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+/*----------------------*/
+/* button look and feel */
+/*----------------------*/
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: #5a5a5a;
+    border-radius: 0;
+    border: 0;
+    color: white !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    height: 2.85em;
+    line-height: 2.95em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover,
+    button:hover,
+    .button:hover {
+        background-color: silver;
+        color: red;
+    }
+
+    input[type="submit"]:active,
+    input[type="reset"]:active,
+    input[type="button"]:active,
+    button:active,
+    .button:active {
+        background-color: black;
+        color: purple;
+    }
