@@ -1,0 +1,14 @@
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.exe.config
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.exe.manifest
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.application
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.exe
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.pdb
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\bin\Debug\BackYard GPS.xml
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\WindowsApplication1.frmGpsUI.resources
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\WindowsApplication1.Resources.resources
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BakeYard GPS.vbproj.GenerateResource.Cache
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BackYard GPS.exe.manifest
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BackYard GPS.application
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BackYard GPS.exe
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BackYard GPS.xml
+D:\VisualStudio\BakeYard GPS\BakeYard GPS\obj\Debug\BackYard GPS.pdb

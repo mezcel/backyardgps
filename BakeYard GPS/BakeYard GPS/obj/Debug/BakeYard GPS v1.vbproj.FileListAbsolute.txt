@@ -1,0 +1,38 @@
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BakeYard GPS v1.exe.config
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.vbproj.GenerateResource.Cache
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BakeYard GPS v1.exe
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BakeYard GPS v1.pdb
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BakeYard GPS v1.xml
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.exe
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.xml
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.pdb
+C:\Users\Mezcel\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.frmPP.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe.config
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe.manifest
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.application
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.pdb
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.xml
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.frmGpsUI.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.vbproj.GenerateResource.Cache
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.exe.manifest
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.application
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.exe
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.xml
+C:\Users\Michael\Documents\Visual Studio 2012\Projects\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.pdb
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe.config
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.exe
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.xml
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.pdb
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe.manifest
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.application
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.exe
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.pdb
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\bin\Debug\BackYard GPS.xml
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.frmGpsUI.resources
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\WindowsApplication1.Resources.resources
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BakeYard GPS v1.vbproj.GenerateResource.Cache
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.exe.manifest
+D:\VisualStudio\BakeYard GPS v1\BakeYard GPS v1\obj\Debug\BackYard GPS.application
