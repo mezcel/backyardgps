@@ -1,7 +1,18 @@
-Notice! This is not a Git Project, enclosed are just coppies of my code
 
+# BakeYard GPS - backyardgps
+##### A VB.Net application using COM Port and radio interface
 
-# Latitude/Longitude Coordinates via GPS Radio Signal
+* Visual Studio Project
+
+> VS Project folder - BakeYard GPS\BakeYard GPS.sln
+
+* Requires a BU-353 Gps Receiver (USB Antenna)
+
+> Driver - pl2303hxa_windows_8_driver_installation\PL2303_Prolific_DriverInstaller_v1.5.0.exe
+
+### About:
+
+##### Latitude/Longitude Coordinates via GPS Radio Signal
 
 This application is developed in VB/NET
 
@@ -14,7 +25,7 @@ This application is developed in VB/NET
 
 [App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
 
-## What to expect from this Application:
+### What to expect from this Application:
 
 * Input GPS Radio Signal Location Information via a GPS antenna
 * Select from a list of USB ports to receive your GPS antenna
@@ -24,7 +35,7 @@ This application is developed in VB/NET
 * Save way-point in a time stamped text file
 * View a X-Y coordinate plane which shows a relative scale relationship to how far a person has moved from their start location
 
-## Celestial Navigation
+### Celestial Navigation
 
 ##### under construction !!!
 
