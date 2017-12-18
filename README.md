@@ -2,7 +2,7 @@
 # BakeYard GPS - backyardgps
 #### A VB.Net application using COM Port and radio interface
 
-[Wiki - App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
+> [Wiki - App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
 
 * Visual Studio Project
     * BakeYard GPS\BakeYard GPS.sln
