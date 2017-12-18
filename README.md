@@ -1,6 +1,6 @@
 
 # BakeYard GPS - backyardgps
-###### A VB.Net application using COM Port and radio interface
+#### A VB.Net application using COM Port and radio interface
 
 [Wiki - App Webpage](http://mezcel.wixsite.com/backyardgps), this webpage explains the background behind developing this DIY application.
 
@@ -9,13 +9,13 @@
 
 
 * Requires a BU-353 Gps Receiver (USB Antenna)
-    * Driver - pl2303hxa_windows_8_driver_installation\PL2303_Prolific_DriverInstaller_v1.5.0.exe
+    * pl2303hxa_windows_8_driver_installation\PL2303_Prolific_DriverInstaller_v1.5.0.exe
 
 ___Note:___ During development, I used the ["XAML Regions"](https://visualstudiogallery.msdn.microsoft.com/3c534623-bb05-417f-afc0-c9e26bf0e177) plugin to help me keep track of my code. It is a small extension that adds the ability to define collapsible regions in XAML & XML code.
 
-#### About:
+# About:
 
-###### Latitude/Longitude Coordinates via GPS Radio Signal
+#### Latitude/Longitude Coordinates via GPS Radio Signal
 
 This application is developed in VB/NET
 
